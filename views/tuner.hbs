@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Music App Tuner</title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/tuner.css">
+	<link href="http://fonts.cdnfonts.com/css/brokenbrush" rel="stylesheet">
+	<script> var guitlowE = new Audio();
+		guitlowE.src = "../audio/guitlowE.mp3"</script>
+	<script> var guitA = new Audio();
+		guitA.src = "../audio/guitA.mp3"</script>
+	<script> var guitD = new Audio();
+		guitD.src = "../audio/guitD.mp3"</script>
+	<script> var guitG = new Audio();
+		guitG.src = "../audio/guitG.mp3"</script>
+	<script> var guitB = new Audio();
+		guitB.src = "../audio/guitB.mp3"</script>
+	<script> var guithiE = new Audio();
+		guithiE.src = "../audio/guithiE.mp3"</script>
+	<script> var bassE = new Audio();
+		bassE.src = "../audio/bassE.mp3"</script>
+	<script> var bassA = new Audio();
+		bassA.src = "../audio/bassA.mp3"</script>
+	<script> var bassD = new Audio();
+		bassD.src = "../audio/bassD.mp3"</script>
+	<script> var bassG = new Audio();
+		bassG.src = "../audio/bassG.mp3"</script>
+	<script> var ukuG = new Audio();
+		ukuG.src = "../audio/ukuG.mp3"</script>
+	<script> var ukuC = new Audio();
+		ukuC.src = "../audio/ukuC.mp3"</script>
+	<script> var ukuE = new Audio();
+		ukuE.src = "../audio/ukuE.mp3"</script>
+	<script> var ukuA = new Audio();
+		ukuA.src = "../audio/ukuA.mp3"</script>
+
+</head>
+<body>
+	<div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{username}}">FEED</a></li>
+			<li><a href = "/profile/{{username}}">PROFILE</a></li>
+			<li><a href = "/tuner"class="active">TUNER</a></li>
+			<li><a href = "/tabs">TABS</a></li>
+			<li><a href = "/metronome">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/search"><img src = "/images/search16.png"></a></li>
+			<li><a href = "/logout">Logged in as: {{username}}</a></li>
+		</ul>
+	</div>
+
+	<div class = "guitarimg">
+		<img class = "guitar" src = "../images/guittuner.png" width = "350" height = "350">
+	</div>
+		<a href = "#" onmousedown ="guitlowE.play()">
+		<button class="guitlowE">E</button> </a>
+		<a href = "#" onmousedown ="guitA.play()">
+		<button class="guitA">A</button></a>
+		<a href = "#" onmousedown ="guitD.play()">
+		<button class="guitD">D</button></a>
+		<a href = "#" onmousedown ="guitG.play()">
+		<button class="guitG">G</button></a>
+		<a href = "#" onmousedown ="guitB.play()">
+		<button class="guitB">B</button></a>
+		<a href = "#" onmousedown ="guithiE.play()">
+		<button class="guithiE">e</button></a>
+	<div class = "bassimg">
+		<img class = "bass" src = "../images/basstuner.png" width = "350" height = "350">
+	</div>
+		<a href = "#" onmousedown ="bassE.play()">
+		<button class="bassE">E</button></a>
+		<a href = "#" onmousedown ="bassA.play()">
+		<button class="bassA">A</button></a>
+		<a href = "#" onmousedown ="bassD.play()">
+		<button class="bassD">D</button></a>
+		<a href = "#" onmousedown ="bassG.play()">
+		<button class="bassG">G</button></a>
+	<div class = "ukuimg">
+		<img class = "uku" src = "../images/ukutuner.png" width = "350" height = "350">
+	</div>
+		<a href = "#" onmousedown ="ukuG.play()">
+		<button class="ukuG">G</button></a>
+		<a href = "#" onmousedown ="ukuC.play()">
+		<button class="ukuC">C</button></a>
+		<a href = "#" onmousedown ="ukuE.play()">
+		<button class="ukuE">E</button></a>
+		<a href = "#" onmousedown ="ukuA.play()">
+		<button class="ukuA">A</button></a>
+	<p class = "guitar-text"> guitar </p> 
+	<p class = "bass-text"> bass </p>
+	<p class = "uku-text"> ukulele </p>
+</body>
+</html>

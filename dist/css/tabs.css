@@ -1,0 +1,120 @@
+.tab img {
+	width: 150px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+h2 {
+	width: 55%;
+	border-bottom: 2px solid  rgb(70,79,65);
+	line-height: 0em;
+	margin: auto;	
+	margin-top: 70px;
+}
+
+h2 span {
+	background: rgb(191,203,168);
+	padding: 0 10px;
+}
+
+/*TABS*/
+#header{
+	margin-top: 50px;
+	justify-content: center;
+	
+}
+
+.title{
+	text-align: center;
+	font-family: Brokenbrush;
+	margin-bottom: 2px;
+	font-size: 60px;
+	color: rgb(70,79,65);
+}
+
+.instru{
+	margin-top: 3px;
+	text-align: center;
+	font-family: BebasN;
+	font-size: 45px;
+	color: white;
+}
+
+input {
+	margin-top: 5px;
+	margin-left: 100px;
+	margin-right: 30px;
+	padding: 10px 20px;
+	width: 300px;
+	box-sizing: border-box;
+	border-radius: 10px;
+}
+
+#tabs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.tab {
+    margin-left: 8px;
+    margin-right: 8px;
+    background-repeat: no-repeat;
+}
+
+.line {
+	display: block;
+	width: 5%;
+	border-top: 1px solid black;
+}
+
+#tablature-line{
+	justify-content: center;
+	margin-top: 3px;
+	text-align: center;
+	font-family: BebasN;
+	font-size: 30px;
+	color: rgb(70,79,65);
+}
+
+.song{
+	width: 55%;
+	border: 1px solid rgb(200,200,200);
+	border-radius: 15px;
+	background-color: white;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.song-title {
+	font-family: BebasN;
+	color: rgb(70,79,65);
+	font-size: 40px;
+	padding-top: 30px;
+	padding-left: 30px;
+}
+
+.song-text {
+	font-family: BebasN;
+	color: rgb(191,203,168);
+	font-size: 30px;
+}
+
+p {
+	margin-top: 50px;
+}
+span.chunk {
+	font-family: BebasN;
+	color: rgb(91,138,114);
+	font-size: 30px;
+	left: 30px;
+	position: relative;
+}
+
+span.chunk:before {
+	content:attr(data-chord);
+	color: rgb(191,203,168);
+	position: absolute;
+	top: -30px;
+}

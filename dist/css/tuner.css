@@ -1,0 +1,286 @@
+body {
+	font-family: 'Brokenbrush', sans-serif;
+	background-color: rgb(191,203,168);
+}	
+
+.guitar
+{
+	position: absolute;
+	top: 100px;
+}
+
+.guitlowE
+{
+	position: absolute;
+	top:28%;
+	left: 20%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.guitA
+{
+	position: absolute;
+	top:28%;
+	left: 27%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.guitD
+{
+	position: absolute;
+	top:28%;
+	left: 34%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.guitG
+{
+	position: absolute;
+	top:28%;
+	left: 41%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.guitB
+{
+	position: absolute;
+	top:28%;
+	left: 48%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.guithiE
+{
+	position: absolute;
+	top:28%;
+	left: 55%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+
+.bass
+{
+	position: absolute;
+	top: 450px;
+}
+
+.bassE
+{
+	position: absolute;
+	top: 67%;
+	left: 20%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.bassA
+{
+	position: absolute;
+	top:67%;
+	left: 27%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.bassD
+{
+	position: absolute;
+	top:67%;
+	left: 34%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.bassG
+{
+	position: absolute;
+	top:67%;
+	left: 41%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.uku
+{
+	position: absolute;
+	top: 800px;
+}
+.ukuG
+{
+	position: absolute;
+	top: 103%;
+	left: 20%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.ukuC
+{
+	position: absolute;
+	top: 103%;
+	left: 27%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.ukuE
+{
+	position: absolute;
+	top: 103%;
+	left: 34%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.ukuA
+{
+	position: absolute;
+	top: 103%;
+	left: 41%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 48%;
+	cursor: pointer;
+}
+.guitar-text
+{
+	position: absolute;
+	top: -70px;
+	left: 370px;
+	font-size: 140px;
+	color: rgb(70,79,65);
+}
+.bass-text
+{
+	position: absolute;
+	top: 300px;
+	left: 370px;
+	font-size: 140px;
+	color: rgb(70,79,65);
+}
+
+.uku-text
+{
+	position: absolute;
+	top: 650px;
+	left: 370px;
+	font-size: 140px;
+	color: rgb(70,79,65);
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Music App </title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/tabs.css">
+</head>
+<body>
+    <div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{username}}">FEED</a></li>
+			<li><a href = "/profile/{{username}}">PROFILE</a></li>
+			<li><a href = "/tuner">TUNER</a></li>
+			<li><a href = "/tabs" class="active">TABS</a></li>
+			<li><a href = "/metronome">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/logout">Logged in as: {{username}}</a></li>
+		</ul>
+	</div>
+
+	<div id = "header"> 
+		<p class = "title">Smells Like Teen Spirit</p>
+		<p class = "instru">Bass Tab</p>
+	</div>
+
+	<div id = "tablature-line">
+		<p><h2><span> Tablature </span></h2></p>
+	</div>
+
+	<div class = "song">
+		<p class = "song-title"> Metronome: </p>
+		<p class = "song-text" style = "margin-top: -40px; margin-left: 40px; margin-bottom: 50px"> 100</p>
+
+		<p class = "song-title"> Main Riff </p>
+		<p class = "song-text" style = "margin-top: -40px; margin-left: 40px; margin-bottom: 50px">this is played for the whole song</p>
+		
+		<p><span class = "chunk" data-chord = "G"> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></p>
+
+		<p><span class = "chunk" data-chord = "D"> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></p>
+
+		<p><span class = "chunk" data-chord = "A"> - - - - - - - - 1 1 1 1 - - - - - - - - 4 4 4 4 - - - </span></p>
+
+		<p><span class = "chunk" data-chord = "E"> - 1 - 1 1 - - - - - - - - - 4 - 4 4 - - - - - - - - - - </span></p>
+
+	
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,106 @@
+body {
+	font-family: BebasN;
+}
+
+input[type=submit] {
+	font-family: BebasN;
+	font-size: 20px;
+	margin-left: 20%;
+	color: white;
+	width: 300px;
+	background-color: rgb(70,79,65);
+	border: none;
+	border-color: rgb(86,119,108);
+	padding: 10px 130px;
+	border-radius: 10px;
+	cursor: pointer;
+	outline: none;
+	margin-bottom: 5%;
+}
+
+input[type=submit]:hover {
+	background-color: rgb(91,138,114);
+}
+
+.header-img {
+	margin-left: 805px;
+	width: 15%;
+}
+
+.login-block {
+	width: 500px;
+	margin: auto;
+	position: relative;
+	border: 1px solid rgb(200,200,200);
+	border-radius: 15px;
+	background-color: rgb(227,227,227);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-title{
+	font-size: 40px;
+	text-align: center;
+}
+
+.login-text {
+	margin-left: 30%;
+	margin-bottom: 1%;
+	font-size: 30px;
+	color: rgb(70,79,65);
+}
+
+.submit {
+	font-family: BebasN;
+	font-size: 20px;
+	margin-left: 100px;
+	margin-bottom: 30px;
+	font-size: 20px;
+	color: white;
+	background-color: rgb(70,79,65);
+	border: none;
+	border-color: rgb(86,119,108);
+	padding: 10px 130px;
+	border-radius: 10px;
+	cursor: pointer;
+	outline: none;
+}
+
+.submit:hover {
+	background-color: rgb(91,138,114);
+}
+
+.forgot-password {
+	margin-left: 100px; 
+	color: rgb(70,79,65);
+	font-size: 20px;
+}
+
+.create-account {
+	text-align: center;	
+	color: rgb(70,79,65);
+	font-size: 20px;
+}
+
+.sign-up-link {
+	color: rgb(70,79,65);
+}
+
+.divider {
+	margin-left: 100px;
+	margin-right: 100px;
+	border: 1px solid grey;
+}
+
+#same_Username{
+   text-align: center;
+}
+
+
+#wrong_Phonenumber{
+	text-align: center;
+}
+
+
+#invalid_password{
+	text-align: center;
+}

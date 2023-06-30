@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Music App </title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/tabs.css">
+</head>
+<body>
+    <div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{username}}">FEED</a></li>
+			<li><a href = "/profile/{{username}}">PROFILE</a></li>
+			<li><a href = "/tuner">TUNER</a></li>
+			<li><a href = "/tabs" class="active">TABS</a></li>
+			<li><a href = "/metronome">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/logout">Logged in as: {{username}}</a></li>
+		</ul>
+	</div>
+
+	<div id = "header"> 
+		<p class = "title">Perfect</p>
+		<p class = "instru">Guitar Chords</p>
+	</div>
+
+	<div id = "tabs">
+		<div class = "tab">
+			<img src = "/images/guitG.png">
+		</div>
+		<div class = "tab">
+			<img src = "/images/guitEm.png">
+		</div> 
+		<div class = "tab" id = "t3">
+			<img src = "/images/guitC.png">
+		</div>
+		<div class = "tab" id = "t4">
+			<img src = "/images/guitD.png">
+		</div> 
+		<div class = "tab" id = "t5">
+			<img src = "/images/guitG_B.png">
+		</div> 
+		<div class = "tab" id = "t6">
+			<img src = "/images/guitDsus7.png">
+		</div> 
+	</div>
+
+	<div id = "tablature-line">
+		<p><h2><span> Tablature </span></h2></p>
+	</div>
+
+	<div class = "song">
+		<p class = "song-title">Notes:</p>
+		<p class = "song-text" style = "margin-top: -40px; margin-left: 40px; margin-bottom: 50px">key: Ab | Capo 1st fret</p>
+		
+		<p class = "song-title">Intro:</p>
+		<p class = "song-text" style = "margin-top: -40px; margin-left: 40px; margin-bottom: 50px">|G &nbsp;|</p>
+		
+		<p class = "song-title">Verse 1:</p>
+		
+		<p><span class = "chunk" data-chord = ""> I found a </span><span class = "chunk" data-chord = "G"> love for </span><span class = "chunk" data-chord = "Em"> me </span></p>
+
+		<p><span class = "chunk" data-chord = ""> Darling, just </span><span class = "chunk" data-chord = "C"> dive right in, and follow my </span><span class = "chunk" data-chord = "D"> lead </span></p>
+
+		<p><span class = "chunk" data-chord = ""> Well, I found a </span><span class = "chunk" data-chord = "G"> girl beauti </span><span class = "chunk" data-chord = "Em">ful and sweet </span></p>
+
+		<p><span class = "chunk" data-chord = ""> I never </span><span class = "chunk" data-chord = "C"> knew you were the someone waiting for </span><span class = "chunk" data-chord = "D"> me </span></p>
+		
+
+		<p class = "song-title">Pre-Chorus:</p>
+		
+		<p><span class = "chunk" data-chord = ""> Cause we were just kids when we </span><span class = "chunk" data-chord = "G"> fell in love </span></p>
+
+		<p><span class = "chunk" data-chord = ""> Not knowing </span><span class = "chunk" data-chord = "Em"> what it was, I will not </span><span class = "chunk" data-chord = "C"> give you up this </span><span class = "chunk" data-chord = "G"> ti- </span><span class = "chunk" data-chord = "D">ime </span></p>
+
+		<p><span class = "chunk" data-chord = ""> Darling just </span><span class = "chunk" data-chord = "G"> kiss me slow, your heart is </span><span class = "chunk" data-chord = "Em"> all I own </span></p>
+
+		<p><span class = "chunk" data-chord = ""> And in your </span><span class = "chunk" data-chord = "C"> eyes you're holding </span><span class = "chunk" data-chord = "D"> mine </span></p>
+	
+
+		<p class = "song-title">Chorus:</p>
+		
+		<p><span class = "chunk" data-chord = ""> Baby, </span><span class = "chunk" data-chord = "Em"> I'm </span><span class = "chunk" data-chord = "C"> dancing in the </span><span class = "chunk" data-chord = "G"> dark, with </span><span class = "chunk" data-chord = "D"> you between my </span><span class = "chunk" data-chord = "Em"> arms </span></p>
+
+		<p><span class = "chunk" data-chord = "C"> Barefoot on the </span><span class = "chunk" data-chord = "G"> grass, </span><span class = "chunk" data-chord = "D"> listening to our </span><span class = "chunk" data-chord = "Em"> favourite song </span></p>
+
+		<p><span class = "chunk" data-chord = ""> When you </span><span class = "chunk" data-chord = "C"> said you looked a </span><span class = "chunk" data-chord = "G"> mess, I whispered </span><span class = "chunk" data-chord = "D"> underneath my </span><span class = "chunk" data-chord = "Em"> breath </span></p>
+
+		<p><span class = "chunk" data-chord = ""> But you </span><span class = "chunk" data-chord = "C"> heard it, darling </span><span class = "chunk" data-chord = "G"> you look </span><span class = "chunk" data-chord = "D"> perfect to</span><span class = "chunk" data-chord = "G">night </span></p>
+
+		<p class = "song-title">Outro:</p>
+		<p class = "song-text" style = "margin-top: -40px; margin-left: 40px; margin-bottom: 50px">|G &nbsp; D&nbsp; Em&nbsp; D&nbsp;|C &nbsp;D &nbsp;| G |</p>
+
+		
+	</div>
+	
+</body>
+</html>

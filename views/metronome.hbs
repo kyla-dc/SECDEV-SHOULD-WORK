@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Music App </title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/metronome.css">
+</head>
+<body>
+	<div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{username}}">FEED</a></li>
+			<li><a href = "/profile/{{username}}">PROFILE</a></li>
+			<li><a href = "/tuner">TUNER</a></li>
+			<li><a href = "/tabs">TABS</a></li>
+			<li><a href = "/metronome"class="active">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/search"><img src = "/images/search16.png"></a></li>
+			<li><a href = "/logout">Logged in as: {{username}}</a></li>
+		</ul>
+	</div>
+	
+	<div class = "tempo-settings">
+		<class class="plusbpm">+</class>
+		<img class = "metronome" src = "images/metronome.png">
+		<class class="minusbpm">-</class>
+	</div>
+	
+	<div class = "tempo-display">
+		<div class = "bpm"> BPM: </div>
+		<div class = "tempo"> 140 </div>
+	</div>
+	
+	<p class="beats-per-measure">Beats per measure</p>
+	   <div class="measures">
+                <div class="minusbeats">-</div>
+                <div class="beats">4</div>
+                <div class="plusbeats">+</div>
+        </div>
+            
+	<div class="start-stop">START</div>
+
+	<script type = "module" src = "/js/metronome.js"></script>
+	<script type = "module" src = "/js/timer.js"></script>
+</body>
+</html>

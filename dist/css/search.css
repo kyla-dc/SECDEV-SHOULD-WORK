@@ -1,0 +1,338 @@
+body {
+	font-family: BebasN;
+}
+
+input[type=text] {
+	margin-top: 5px;
+	margin-left: 100px;
+	margin-right: 30px;
+	padding: 10px 20px;
+	width: 300px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: none;
+}
+
+label {
+	margin-left: 20%;
+	font-size: 20px;
+	color: rgb(70,79,65);
+	font-size: 20px;
+}
+
+input[type=button] {
+	font-family: BebasN;
+	font-size: 20px;
+	margin-left: 20%;
+	color: white;
+	width: 300px;
+	background-color: rgb(70,79,65);
+	border: none;
+	border-color: rgb(86,119,108);
+	padding: 10px 130px;
+	border-radius: 10px;
+	cursor: pointer;
+	outline: none;
+
+}
+
+input[type=button]:hover {
+	background-color: rgb(91,138,114);
+}
+
+.search_block {
+	width: 500px;
+	margin: auto;
+	position: relative;
+	border: 1px solid rgb(200,200,200);
+	border-radius: 15px;
+	background-color: rgb(227,227,227);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-bottom: 100px;
+}
+
+#search_type {
+	margin-top: 2%;
+	text-decoration: none;
+	margin-left: 10%;
+	font-family: BebasN;
+	font-size: 21px;
+	width: 123px;
+}
+
+#errormsg {
+	font-family: BebasN;
+	color: white;
+	font-size: 100px;
+}
+
+/* BEGIN USER CSS */
+
+#feed-break {
+	width: 50px;
+}
+
+#post {
+	margin: auto;
+	margin-top: 50px;
+	box-sizing: content-box;
+	width: 400px;
+	height: 600px;
+	border: 5px solid white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	background-color: white;
+}
+
+.feed {
+	margin-left: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-grow: 1;
+	background-color: rgb(191,203,168);
+}
+
+#post-content {
+	overflow: hidden;
+	margin-bottom: 10px;
+	box-sizing: content-box;
+	width: 400px;
+	max-height: 250px;
+	text-align: center;
+	background-color: rgb(230,230,230);
+	border-radius: 5px;
+}
+
+#post-image {
+	object-fit: cover;
+	border: none;
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 5px;
+}
+
+#post-video {
+	object-fit: cover;
+	border: none;
+	height: 250px;
+	max-width: 100%;
+	border-radius: 5px;
+}
+
+#post-audio {
+	object-fit: cover;
+	border: none;
+	height: 250px;
+	max-width: 100%;
+	border-radius: 5px;
+}
+
+#post-user {
+	margin-top: 5px;
+	font-family: Helvetica;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#post-user a {
+	text-decoration: none;
+	color: black;
+}
+
+#post-desc {
+	margin-top: 5px;
+	height: 280px;
+	font-family: Helvetica;
+	font-size: 15px;
+}
+
+#divider {
+	width: 397px;
+	border: 1px solid rgb(222,222,222);
+}
+
+#footer {
+	display: inline-flex;
+	font-family: BebasN;
+	font-size: 25px;
+	color: rgb(91,138,114);
+}
+
+#like-icon {
+	margin-top: 5px;
+	margin-left: 5px;
+	cursor: pointer;
+	height: 24px;
+	width: 24px;
+}
+
+.likes-num {
+	margin-top: 3px;
+	margin-left: 3px;
+}
+
+#comment-button {
+	margin: auto;
+	margin-left: 275px;
+	margin-bottom: 25px;
+	background-color: rgb(86,119,108);
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+#comment-button:hover {
+	background-color: rgb(91,138,114);
+}
+
+#delete-button {
+	position: absolute;
+	margin: auto;
+	margin-top: 4px;
+	margin-left: 256px;
+	background-color: rgb(86,119,108);
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+#delete-button:hover {
+	background-color: rgb(91,138,114);
+}
+
+/* END POST CSS */
+
+/* BEGIN USER CSS */
+#user-block {
+	display: block;
+	justify-content: center;
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	box-sizing: content-box;
+	width: 400px;
+	height: 200px;
+	border: 5px solid white;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	background-color: white;
+}
+
+#avatar {
+	margin-top: 2%;
+	display: block;
+	justify-content: center;
+	margin-left: 35%;
+}
+
+#avatar-img {
+	margin: auto;
+	height: 100px;
+	width: 100px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 0px solid black;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#user-username {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#user-username a {
+	text-decoration: none;
+	color: black;
+}
+
+#user-fullname {
+	font-weight: normal;
+	float: right;
+}
+
+#user-footer {
+	font-size: 18px;
+	display: inline-flex;
+}
+
+#user-posts {
+	position: absolute;
+	margin-left: 10px;
+}
+#user-followers {
+	position: absolute;
+	margin-left: 310px;
+}
+/* END USER CSS */
+
+/* BEGIN COMMENT CSS */
+#comment-block {
+	display: block;
+	justify-content: center;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	box-sizing: content-box;
+	width: 400px;
+	height: 70px;
+	max-height: 200px;
+	border: 5px solid white;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	background-color: white;
+}
+
+#commentName {
+	font-family: Helvetica;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#commentName a{
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+
+#commentContent {
+	font-family: Helvetica;
+}
+
+#postLink {
+	float:right;
+}
+
+/* END COMMENT CSS */
+
+/* BEGIN TABS CSS */
+
+#tabs_block {
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	box-sizing: content-box;
+	width: 400px;
+	height: 70px;
+	max-height: 200px;
+	border: 5px solid white;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	background-color: white;
+}
+
+#tabs_name {
+	text-align: center;
+	color: rgb(86,119,108);
+	text-decoration: none;
+	font-size: 30px;
+}
+
+#tabs_instrument {
+	font-size: 20px;
+}
+
+/* END TABS CSS */

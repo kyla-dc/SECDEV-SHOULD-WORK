@@ -1,0 +1,237 @@
+@font-face {
+	font-family: BebasN;
+	src: url('fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+	font-family: BebasN;
+	src: url('fonts/BebasNeue-Bold.ttf');
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+}
+
+.user-header {
+	display: flex;
+	justify-content: center;
+	align-items:center;
+}
+
+.userdp
+{
+	display: flex;
+	position: absolute;
+	top: 10%;
+	left: 42%;
+	overflow: hidden;
+}
+
+.dp {
+	object-fit: cover;
+	border-radius: 50%;
+	border: 0px solid black;
+}
+
+.upload {
+	height: 80px;
+	width: 80px;
+	margin-left: -80px;
+	margin-top: 220px;
+	object-fit: cover;
+	border-radius: 50%;
+	opacity: 1;
+	cursor: pointer;
+}
+
+.upload:hover {
+	display: block;
+	opacity: 0.3;
+}
+
+body {
+	background-color: rgb(191,203,168);
+}
+
+.nav-bar {
+	font-family: BebasN;
+	font-size: 20px;
+	position: relative;
+	background-color: rgb(86,119,108);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.usercover
+{
+	position: absolute;
+	top: 0px;
+}
+.displayname
+{
+	color: white;
+	font-family: BebasN;
+	font-size: 50px;
+	position: absolute;
+	top: 42%;
+}
+
+.username
+{
+	color: white;
+	font-family: BebasN;
+	font-size: 25px;
+	position: absolute;
+	top: 48%;
+}
+
+.posts
+{
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	position: absolute;
+	top: 520px;
+	left: 27%;
+	background-color: rgb(86,119,108);
+	padding: 14px 16px;
+
+}
+
+.view-posts {
+	position: absolute;
+	background-color: rgb(86,119,108);
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	border: none;
+	padding: 14px 16px;
+	top: 520px;
+	left: 39%;
+	cursor: pointer;
+}
+
+.view-posts:hover {
+	background-color: rgb(91,138,114);
+}
+
+.dropbtn {
+	background-color: rgb(86,119,108);
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	border: none;
+	padding: 14px 16px;
+}
+
+.dropdown {
+	position: absolute;
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	top: 520px;
+	right: 34%;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: rgb(200,200,200);
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: rgb(91,138,114);
+}
+
+.add-post
+{
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	position: absolute;
+	top: 520px;
+	right: 27%;
+	border: none;
+	background-color: rgb(86,119,108);
+	padding: 14px 16px;
+	cursor: pointer;
+}
+
+.add-post:hover {
+	background-color: rgb(91,138,114);
+}
+
+.follow_button
+{
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	position: absolute;
+	top: 520px;
+	right: 27%;
+	border: none;
+	background-color: rgb(86,119,108);
+	padding: 14px 16px;
+	cursor: pointer;
+}
+
+.follow_button:hover {
+	background-color: rgb(91,138,114);
+}
+
+.change-password {
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	position: absolute;
+	top: 520px;
+	right: 27%;
+	border: none;
+	background-color: rgb(86,119,108);
+	padding: 14px 16px;
+	cursor: pointer;
+	display: none;
+}
+
+.change-password:hover {
+	display: block;
+}
+
+.followers
+{
+	color: white;
+	font-family: BebasN;
+	font-size: 20px;
+	position: absolute;
+	top: 520px;
+	left: 32%;
+	background-color: rgb(86,119,108);
+	padding: 14px 16px;
+}
+.Phone{
+	color: white;
+    font-family: BebasN;
+    font-size: 20px;
+    position: absolute;
+    top: 51%;
+}

@@ -1,0 +1,124 @@
+@import url('https://fonts.cdnfonts.com/css/brokenbrush');
+
+.metronome{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 70px;
+	width: 500px;
+	height: 500px;
+}
+.plusbpm
+{
+	position: absolute;
+	top:28%;
+	left: 63%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 50%;
+}
+.minusbpm
+{
+	position: absolute;
+	top:28%;
+	left: 30%;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 50%;
+}
+
+.bpm, .tempo {
+	font-family: Brokenbrush, sans-serif;
+	font-size: 70px;
+	color: rgb(70,79,65);
+	display: block;
+	text-align: center;
+	padding: 14px 16px;
+}
+
+.tempo-display, .tempo-settings{
+	display: flex;
+	justify-content: center;
+}
+
+
+.start-stop {
+    width: 100px;
+    height: 100px;
+    font-size: 1em;
+    text-align: center;
+    background: rgb(70,79,65);
+    border-radius: 50%;
+    color: #fff;
+    line-height: 100px;
+    margin: 0 auto;
+	margin-top: 5px;
+    cursor: pointer;
+}
+
+.start-stop:hover, .minusbpm:hover, .plusbpm:hover, .plusbeats:hover, .minusbeats:hover {
+    background: rgb(91,138,114);
+}
+.measures {
+    display: flex;
+    justify-content: center;
+}
+.measures .beats {
+    width: 80px;
+    height: 80px;
+    border-radius: 60%;
+    text-align: center;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.measures .plusbeats {
+    line-height: 20px;
+}
+
+.beats-per-measure {
+	font-family: Brokenbrush, sans-serif;
+	font-size: 50px;
+	color: rgb(70,79,65);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.minusbeats, .plusbeats
+{
+	
+	line-height: 20px;
+	background-color: rgb(70,79,65);
+	border: none;
+	color:rgb(227,227,227);
+	padding: 30px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 30px;
+	margin: none;
+	border-radius: 50%;
+}
+.beats{
+	font-family: Brokenbrush, sans-serif;
+	font-size: 60px;
+	color: rgb(70,79,65);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+

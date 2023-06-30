@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Music App </title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/tabs.css">
+</head>
+<body>
+    <div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{username}}">FEED</a></li>
+			<li><a href = "/profile/{{username}}">PROFILE</a></li>
+			<li><a href = "/tuner">TUNER</a></li>
+			<li><a href = "/tabs" class="active">TABS</a></li>
+			<li><a href = "/metronome">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/logout">Logged in as: {{username}}</a></li>
+		</ul>
+	</div>
+
+	<div id = "header"> 
+		<p class = "title">Pumped Up Kicks</p>
+		<p class = "instru">Ukulele Chords</p>
+	</div>
+
+	<div id = "tabs">
+		<div class = "tab">
+			<img src = "/images/ukuEm.png">
+		</div>
+		<div class = "tab">
+			<img src = "/images/ukuG.png">
+		</div> 
+		<div class = "tab" id = "t3">
+			<img src = "/images/ukuD.png">
+		</div>
+		<div class = "tab" id = "t4">
+			<img src = "/images/ukuA.png">
+		</div>
+	</div>
+
+	<div id = "tablature-line">
+		<p><h2><span> Tablature </span></h2></p>
+	</div>
+
+	<div class = "song">
+		<p class = "song-title"> note:</p>
+		<p class = "song-text" style = "margin-top: -40px; margin-left: 40px; margin-bottom: 50px"> (capo 1st fret)</p>
+		<p><span class = "chunk" data-chord = "Em"> Robert's got a quick hand </span><span class = "chunk" data-chord = "G"></span></p>
+
+		<p><span class = "chunk" data-chord = ""> He'll </span><span class = "chunk" data-chord = "D"> look around the room he won't </span><span class = "chunk" data-chord = "A"> tell you his plan </span></p>
+
+		<p><span class = "chunk" data-chord = "Em"> Got a rolled cigarette </span><span class = "chunk" data-chord = "G"></span></p>
+
+		<p><span class = "chunk" data-chord = "D"> Hangin' out his mouth, he's a </span><span class = "chunk" data-chord = "A"> cowboy kid </span></p>
+
+		<p><span class = "chunk" data-chord = ""> Yeah, </span><span class = "chunk" data-chord = "Em"> found a six-shooter gun </span><span class = "chunk" data-chord = "G">  </span></p>
+
+		<p><span class = "chunk" data-chord = ""> In his </span><span class = "chunk" data-chord = "D"> dads closet hidden with a </span><span class = "chunk" data-chord = "A"> box of fun things </span></p>
+
+		<p><span class = "chunk" data-chord = "Em"> I don't even know what </span><span class = "chunk" data-chord = "G"></span></p>
+
+		<p><span class = "chunk" data-chord = ""> But he's </span><span class = "chunk" data-chord = "D"> comin' for you, yeah he's </span><span class = "chunk" data-chord = "A"> comin for you, hey </span></p>
+
+		<p class = "song-title"> chorus:</p>
+		<p><span class = "chunk" data-chord = ""> ---------</span><span class = "chunk" data-chord = "">----------------------------------------------------------------------------</span></p>
+
+		<p><span class = "chunk" data-chord = "Em"> All the other kids with the </span><span class = "chunk" data-chord = "G"> pumped up kicks </span></p>
+
+		<p><span class = "chunk" data-chord = ""> You'd better </span><span class = "chunk" data-chord = "D"> run, better run </span></p>
+
+		<p><span class = "chunk" data-chord = "A"> Outrun my gun </span></p>
+
+		<p><span class = "chunk" data-chord = "Em"> All the other kids with the </span><span class = "chunk" data-chord = "G"> pumped up kicks </span></p>
+
+		<p><span class = "chunk" data-chord = ""> You'd better </span><span class = "chunk" data-chord = "D"> run, better run </span></p>
+
+		<p><span class = "chunk" data-chord = "A"> Faster than my bullet  </span></p>
+
+		<p><span class = "chunk" data-chord = "(repeat "> ----------</span><span class = "chunk" data-chord = " chorus)">----------------------------------------------------------------------------</span></p>
+
+
+		<p><span class = "chunk" data-chord = "Em"> Daddy works a long day </span><span class = "chunk" data-chord = "G"></span></p>
+
+		<p><span class = "chunk" data-chord = ""> He'll be </span><span class = "chunk" data-chord = "D"> coming home late, he's </span><span class = "chunk" data-chord = "A"> coming home late </span></p>
+
+		<p><span class = "chunk" data-chord = ""> And he's </span><span class = "chunk" data-chord = "Em"> bringing me a surprise </span><span class = "chunk" data-chord = "G">  </span></p>
+
+		<p><span class = "chunk" data-chord = ""> Cos' </span><span class = "chunk" data-chord = "D"> dinner's in the kitchen and it's </span><span class = "chunk" data-chord = "A"> packed in ice </span></p>
+
+		<p><span class = "chunk" data-chord = ""> I've </span><span class = "chunk" data-chord = "Em"> waited for a long time </span><span class = "chunk" data-chord = "G">  </span></p>
+
+		<p><span class = "chunk" data-chord = ""> the </span><span class = "chunk" data-chord = "D"> slight of my hand is now a </span><span class = "chunk" data-chord = "A"> quick pull trigger </span></p>
+
+		<p><span class = "chunk" data-chord = ""> I </span><span class = "chunk" data-chord = "Em"> reason with my cigarette </span><span class = "chunk" data-chord = "G"></span></p>
+
+		<p><span class = "chunk" data-chord = ""> And say your </span><span class = "chunk" data-chord = "D"> hair's on fire you must have </span><span class = "chunk" data-chord = "A"> lost your wits, yeah </span></p>
+
+		<p class = "song-title"> chorus:</p>
+		<p><span class = "chunk" data-chord = ""> ---------</span><span class = "chunk" data-chord = "">----------------------------------------------------------------------------</span></p>
+		
+		<p><span class = "chunk" data-chord = "Em"> All the other kids with the </span><span class = "chunk" data-chord = "G"> pumped up kicks </span></p>
+
+		<p><span class = "chunk" data-chord = ""> You'd better </span><span class = "chunk" data-chord = "D"> run, better run </span></p>
+
+		<p><span class = "chunk" data-chord = "A"> Outrun my gun </span></p>
+
+		<p><span class = "chunk" data-chord = "Em"> All the other kids with the </span><span class = "chunk" data-chord = "G"> pumped up kicks </span></p>
+
+		<p><span class = "chunk" data-chord = ""> You'd better </span><span class = "chunk" data-chord = "D"> run, better run </span></p>
+
+		<p><span class = "chunk" data-chord = "A"> Faster than my bullet  </span></p>
+
+		<p><span class = "chunk" data-chord = "(repeat "> ----------</span><span class = "chunk" data-chord = "  chorus)">----------------------------------------------------------------------------</span></p>
+
+	</div>
+	
+</body>
+</html>

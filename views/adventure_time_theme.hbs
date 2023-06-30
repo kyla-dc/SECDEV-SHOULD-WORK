@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Music App </title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/tabs.css">
+</head>
+<body>
+    <div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{username}}">FEED</a></li>
+			<li><a href = "/profile/{{username}}">PROFILE</a></li>
+			<li><a href = "/tuner">TUNER</a></li>
+			<li><a href = "/tabs" class="active">TABS</a></li>
+			<li><a href = "/metronome">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/logout">Logged in as: {{username}}</a></li>
+		</ul>
+	</div>
+
+	<div id = "header"> 
+		<p class = "title">Adventure Time Theme Song</p>
+		<p class = "instru">Ukulele Chords</p>
+	</div>
+
+	<div id = "tabs">
+		<div class = "tab">
+			<img src = "/images/ukuC.png">
+		</div>
+		<div class = "tab">
+			<img src = "/images/ukuD.png">
+		</div> 
+		<div class = "tab" id = "t3">
+			<img src = "/images/ukuG.png">
+		</div>
+	</div>
+
+	<div id = "tablature-line">
+		<p><h2><span> Tablature </span></h2></p>
+	</div>
+
+	<div class = "song">
+		<p><span class = "chunk" data-chord = "G"> Adventure time, </span><span class = "chunk" data-chord = "D"> come on, grab your friends. </span></p>
+
+		<p><span class = "chunk" data-chord = ""> We'll </span><span class = "chunk" data-chord = "C"> go to very </span><span class = "chunk" data-chord = "D"> distant lands. </span></p>
+
+		<p><span class = "chunk" data-chord = ""> With </span><span class = "chunk" data-chord = "G"> Jake the dog, and </span><span class = "chunk" data-chord = "D"> Finn the human, </span></p>
+
+		<p><span class = "chunk" data-chord = ""> the </span><span class = "chunk" data-chord = "C"> fun will never </span><span class = "chunk" data-chord = "D"> end. It's ADVENTURE</span><span class = "chunk" data-chord = "G"> TIME! </span></p>
+
+	</div>
+	
+</body>
+</html>

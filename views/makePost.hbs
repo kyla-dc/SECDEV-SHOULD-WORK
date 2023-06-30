@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Edit {{username}} </title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/makepost.css">
+	<script src = "https://code.jquery.com/jquery-3.4.1.min.js" type = "text/javascript"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+</head>
+<body>
+	<!-- Nav Bar -->
+	<div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{sessionname}}">FEED</a></li>
+			<li><a href = "/profile/{{sessionname}}" class="active">PROFILE</a></li>
+			<li><a href = "/tuner">TUNER</a></li>
+			<li><a href = "/tabs">TABS</a></li>
+			<li><a href = "/metronome">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/search"><img src = "/images/search16.png"></a></li>
+			<li><a href = "/logout">Logged in as: {{sessionname}}</a></li>
+		</ul>
+	</div>
+	<!-- Edit Profile Info -->
+	<div class = "post-block">
+	<form class = "post-form" id = "post-form" enctype="multipart/form-data" method = "post" action = '/uploadPost'>
+		<br>
+		<label for = "content_type">Content Type</label><br>
+		<select id = "content_type" name = "content_type" required>
+			<option value = "image">Image</option>
+			<option value = "video">Video</option>
+			<option value = "audio">Audio</option>
+		</select><br>
+		<label for = "file"> Upload File: </label><br>
+		<input type = "file" id = "file" class = "file" name = "file" required><br><br>
+		<label for = "description"> Description </label><br>
+		<textarea id = "description_area" name = "description_area" rows = "10" cols = "35" placeholder = "Enter Description" required></textarea>
+		<input type = "text" id = "tags" name = "tags" placeholder="Tags: #Tag1 #Tag2 #Tag3" onkeyup="prepend()">
+		<!-- Hidden Values -->
+		<input type = "text" id = "hiddenUsername" class = "hiddenUsername" name = "hiddenUsername" value = "{{sessionname}}" hidden>
+		<input type = "text" id = "postNum" class = "postNum" name = "postNum" value = "{{numPosts}}" hidden>
+		<input type = "text" id = "userID" class = "userID" name = "userID" value = "{{userID}}" hidden>
+		<input type = "text" id = "postID" class = "postID" name = "postID" hidden>
+
+		<!-- SUBMIT -->
+		<input type = "submit" value = "Submit" onclick="submitPost()"><br><br>
+	</form>
+	</div>
+	<script type = "text/javascript" src = "/js/makepost.js"></script>
+</body>
+</html>

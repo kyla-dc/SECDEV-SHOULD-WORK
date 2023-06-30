@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Edit {{username}} </title>
+	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
+	<link rel = "stylesheet" href = "../css/page.css">
+	<link rel = "stylesheet" href = "../css/nav-bar.css">
+	<link rel = "stylesheet" href = "../css/changepass.css">
+	<script src = "https://code.jquery.com/jquery-3.4.1.min.js" type = "text/javascript"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+</head>
+<body onload = "changeImage()">
+	<!-- Nav Bar -->
+	<div class = "nav-bar"> 
+		<ul>
+			<li><a href = "/"> Music for Inspiring Creators </a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/feed/{{sessionname}}">FEED</a></li>
+			<li><a href = "/profile/{{username}}" class="active">PROFILE</a></li>
+			<li><a href = "/tuner">TUNER</a></li>
+			<li><a href = "/tabs">TABS</a></li>
+			<li><a href = "/metronome">METRONOME</a></li>
+			<li><div class = "break"></div></li>
+			<li><a href = "/search"><img src = "/images/search16.png"></a></li>
+			<li><a href = "/logout">Logged in as: {{username}}</a></li>
+		</ul>
+	</div>
+	<!-- DP -->
+	<div class = "userdp">
+		<img id = "dp" class = "dp" width = "300" height = "300">
+	</div>
+	<!-- Change Password -->
+	<div class = "edit-block">
+	<form class ="passInfo" method = "post" action = "/postChangePassword">
+		<br>
+		<label for = "curPassword"> Current Password: </label><br>
+		<input type = "text" id = "curPassword" class = "curPassword" name = "curPassword" required><br><br>
+		<label for = "newPassword"> New Password: </label><br>
+		<input type = "text" id = "newPassword" class = "newPassword" name = "newPassword" required><br><br>
+
+		<!-- Hidden Values -->
+		<input type = "text" id = "hiddenUsername" class = "hiddenUsername" name = "hiddenUsername" value = "{{username}}" hidden>
+		<input type = "text" id = "hiddenPassword" class = "hiddenPassword" name = "hiddenPassword" value = "{{password}}" hidden>
+
+		<!-- SUBMIT -->
+		<input type = "submit" id = "save-password" class = "save-password" value = "Save"><br><br>
+	</form>
+	</div>
+
+	
+	<script type = "text/javascript" src = "/js/editprofile.js"></script>
+</body>
+</html>
