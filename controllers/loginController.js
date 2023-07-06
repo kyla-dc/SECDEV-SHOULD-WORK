@@ -52,12 +52,28 @@ const loginController = {
             if (result == null) {
                 attempts = attempts - 1;
                 if (attempts == 0) {
+                    var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
+                    res.render('error', error);
+
                     document.getElementById("username").disabled=true;
                     document.getElementById("password").disabled=true;
                     document.getElementById("submit").disabled=true;
 
-                    var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
-                    res.render('error', error);
+                    // NOT SURE IF THIS WILL WORK
+                    var start_time = new Date();
+                    var end_time = new Date( start_time );
+                    end_time.setMinutes ( end_time.getMinutes() + 30 );
+                    
+                    while(true){
+                        var curr_time = new Date();
+                        if(end_time == curr_time) {
+                            document.getElementById("username").disabled=false;
+                            document.getElementById("password").disabled=false;
+                            document.getElementById("submit").disabled=false;
+                            break;
+                        }
+                    }
+                    
                 }
 
                 else {
@@ -84,6 +100,21 @@ const loginController = {
 
                             var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
                             res.render('error', error);
+
+                            // NOT SURE IF THIS WILL WORK
+                            var start_time = new Date();
+                            var end_time = new Date( start_time );
+                            end_time.setMinutes ( end_time.getMinutes() + 30 );
+                            
+                            while(true){
+                                var curr_time = new Date();
+                                if(end_time == curr_time) {
+                                    document.getElementById("username").disabled=false;
+                                    document.getElementById("password").disabled=false;
+                                    document.getElementById("submit").disabled=false;
+                                    break;
+                                }
+                            }
                         }
 
                         else {
