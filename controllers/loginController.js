@@ -1,9 +1,3 @@
-- record logs for every login and logout (for admin)
-- general error messages [DONE]
-- login failed attempts [
-- separate accounts for devs, developments, and production (public)
-- code should only allow soft delete a record in the database
-
 const db = require('../models/db.js');
 const Users = require('../models/UserModel.js');
 const bcrypt = require('bcrypt');
