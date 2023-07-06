@@ -1,6 +1,13 @@
+- record logs for every login and logout (for admin)
+- general error messages [DONE]
+- login failed attempts [
+- separate accounts for devs, developments, and production (public)
+- code should only allow soft delete a record in the database
+
 const db = require('../models/db.js');
 const Users = require('../models/UserModel.js');
 const bcrypt = require('bcrypt');
+var attempts = 5;
 
 const loginController = {
     getLogin: function (req, res) {
@@ -37,6 +44,7 @@ const loginController = {
     },
 
 	postLogin: function (req, res) {
+        
         var username = req.body.username;
         var password = req.body.password;
         var user = {
@@ -48,8 +56,20 @@ const loginController = {
         db.findOne(Users, user, projection, function(result) {  
             console.log(result);
             if (result == null) {
-                var error = {error: 'Account does not exist'}
-                res.render('error', error);
+                attempts = attempts - 1;
+                if (attempts == 0) {
+                    document.getElementById("username").disabled=true;
+                    document.getElementById("password").disabled=true;
+                    document.getElementById("submit").disabled=true;
+
+                    var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
+                    res.render('error', error);
+                }
+
+                else {
+                    var error = {error: 'You have entered an invalid username or password'}
+                    res.render('error', error);
+                }
             }
         	else if (result.username == username && result != null) {
         		bcrypt.compare(password, result.password, function (err, equal) {
@@ -61,8 +81,22 @@ const loginController = {
         				res.redirect('/profile/'+user.username);
         			}
                     else {
-                        var error = {error: 'Password does not match'}
-                        res.render('error', error);
+                        attempts = attempts - 1;
+                        if (attempts == 0) {
+                            lockdown = lockdown + 1;
+                            document.getElementById("username").disabled=true;
+                            document.getElementById("password").disabled=true;
+                            document.getElementById("submit").disabled=true;
+
+                            var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
+                            res.render('error', error);
+                        }
+
+                        else {
+                            var error = {error: 'You have entered an invalid username or password'}
+                            res.render('error', error);
+                        }
+                        
                     }
         		});
             }
