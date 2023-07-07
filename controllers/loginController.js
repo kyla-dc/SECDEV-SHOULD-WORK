@@ -55,25 +55,13 @@ const loginController = {
                     var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
                     res.render('error', error);
 
-                    document.getElementById("username").disabled=true;
-                    document.getElementById("password").disabled=true;
+                    // disables submit button for 15 minutes
                     document.getElementById("submit").disabled=true;
+                    setTimeout(function(){  
+                        document.getElementById("submit").disabled=false;
+                    }, 15 * 60 * 1000);
 
-                    // NOT SURE IF THIS WILL WORK
-                    var start_time = new Date();
-                    var end_time = new Date( start_time );
-                    end_time.setMinutes ( end_time.getMinutes() + 30 );
-                    
-                    while(true){
-                        var curr_time = new Date();
-                        if(end_time == curr_time) {
-                            document.getElementById("username").disabled=false;
-                            document.getElementById("password").disabled=false;
-                            document.getElementById("submit").disabled=false;
-                            break;
-                        }
-                    }
-                    
+                    attempts = 3; // refresh attempts after lockout
                 }
 
                 else {
@@ -93,28 +81,16 @@ const loginController = {
                     else {
                         attempts = attempts - 1;
                         if (attempts == 0) {
-                            lockdown = lockdown + 1;
-                            document.getElementById("username").disabled=true;
-                            document.getElementById("password").disabled=true;
-                            document.getElementById("submit").disabled=true;
-
                             var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
                             res.render('error', error);
 
-                            // NOT SURE IF THIS WILL WORK
-                            var start_time = new Date();
-                            var end_time = new Date( start_time );
-                            end_time.setMinutes ( end_time.getMinutes() + 30 );
-                            
-                            while(true){
-                                var curr_time = new Date();
-                                if(end_time == curr_time) {
-                                    document.getElementById("username").disabled=false;
-                                    document.getElementById("password").disabled=false;
-                                    document.getElementById("submit").disabled=false;
-                                    break;
-                                }
-                            }
+                            // disables submit button for 15 minutes
+                            document.getElementById("submit").disabled=true;
+                            setTimeout(function(){  
+                                document.getElementById("submit").disabled=false;
+                            }, 15 * 60 * 1000);
+
+                            attempts = 3; // refresh attempts after lockout
                         }
 
                         else {
