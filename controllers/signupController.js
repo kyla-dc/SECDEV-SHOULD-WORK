@@ -5,7 +5,8 @@ const saltRounds = 10;
 const initID = 1000;
 var isValidEmail = false;
 var isValidPassword = false;
-var isValidUsername = false;
+var isValidPhone = false;
+var isUniqueUsername = false;
 
 const signupController = {
     getSignUp: function (req, res) {
@@ -26,13 +27,14 @@ const signupController = {
 
         var regexEmail = /^(([a-zA-Z0-9])+(-|.|_)?([a-zA-Z0-9])+)+@([a-zA-Z0-9]|_)+(.\w{2})+$/;
         var regexPass = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@!+"\/,_:#$%^&*()_\-=\[\]\{\};':"\\\|<>?])[a-zA-Z0-9@!+"\/,_:#$%^&*()_\-=\[\]\{\};':"\\\|<>?]{8,}/;
+        var regexPhone = /\d{10}$/
 
         /* checks if email format is valid */
         if(!email.value.match(regexEmail)){
-            document.getElementById("wrong_email").style.display = "flex";
+            document.getElementById("invalid_email").style.display = "flex";
         }
         else {
-            document.getElementById("wrong_email").style.display = "none";
+            document.getElementById("invalid_email").style.display = "none";
             isValidEmail = true;
         }
 
@@ -45,20 +47,30 @@ const signupController = {
             isValidPassword = true;
         }
 
+        /* checks if phone num format valid */
+        if(!password.value.match(regexPhone)){
+            document.getElementById("invalid_phone").style.display = "flex";
+        }
+        else{
+            document.getElementById("invalid_phone").style.display = "none";
+            isValidPhone = true;
+        }
+
+
         /* checks if username is unique */
         db.findOne(User, {username: username}, 'username', function (result) {
             res.send(result);
 
             if(result == null) {
-                document.getElementById("same_Username").style.display = "flex";
+                document.getElementById("same_username").style.display = "flex";
             }
             else {
-                document.getElementById("same_Username").style.display = "none";
-                isValidUsername = true;
+                document.getElementById("same_username").style.display = "none";
+                isUniqueUsername = true;
             }
         });
 
-        if(isValidEmail && isValidPassword && isValidUsername){
+        if(isValidEmail && isValidPassword && isUniqueUsername && isValidPhone){
             function insert(userID, result) {
                 userID = result.length + initID;
                 console.log(userID);
