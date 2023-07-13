@@ -25,7 +25,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.11.1",
     "hbs": "^4.1.2",
-    "mongodb": "^3.6.6",
+    "mongodb": "^3.7.4",
     "mongoose": "^5.12.5"
   },
   "bugs": {
@@ -34,7 +34,6 @@
   "engines": {
     "node": "14.x"
   },
-  "devDependencies": {},
   "keywords": [
     "Social",
     "Music",
