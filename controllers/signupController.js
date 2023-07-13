@@ -34,7 +34,8 @@ const signupController = {
                 phone: phone,
                 numPosts: 0,
                 followers: [],
-                avatar: '../images/default.png'
+                avatar: '../images/default.png', 
+                isDeleted: false    
             }
 
             db.insertOne(User, user, function(result) {
