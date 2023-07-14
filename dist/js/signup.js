@@ -25,8 +25,6 @@ $(document).ready(function () {
         var password = $("#password").val();
         var passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
 
-        
-
         if (passwordRegex.test(password)) {
             $.get('/getCheckPassword', {password: password}, function(result) {
                 if(result.password == password) {
@@ -73,7 +71,6 @@ $(document).ready(function () {
         var phone = $('#phone').val();
         var PhoneRegex = /^\+?[0-9]{1,3}-?[0-9]{1,14}$/
 
-     
         if(PhoneRegex.test(phone)) {
             $('#phone').css('background-color', '#E3E3E3');
             $('#wrong_Phonenumber').css("display", "none");

@@ -28,7 +28,7 @@ node add_userdata.js
 node add_postdata.js
 ```
 ```
-node add_commentsdata.js
+node add_commentdata.js
 ```
 ```
 node add_tabsdata.js

@@ -1,7 +1,6 @@
 const db = require('../models/db.js');
 const Users = require('../models/UserModel.js');
 const bcrypt = require('bcrypt');
-var attempts = 5;
 
 const loginController = {
     getLogin: function (req, res) {
@@ -18,12 +17,12 @@ const loginController = {
             username: username,
         }
 
-        var projection = 'username password';
+        var projection = 'username password isDeleted';
 
         db.findOne(Users, user, projection, function (result) {
             if (result != null) {
                 bcrypt.compare(password, result.password, function (err, equal) {
-                    if (equal) {
+                    if (equal && result.isDeleted == false) {
                         res.send(true);
                     }
                     else {
@@ -38,36 +37,19 @@ const loginController = {
     },
 
 	postLogin: function (req, res) {
-        
         var username = req.body.username;
         var password = req.body.password;
         var user = {
         	username: username
         }
 
-        var projection = 'userID username password';
+        var projection = 'userID username password isDeleted';
 
         db.findOne(Users, user, projection, function(result) {  
             console.log(result);
-            if (result == null) {
-                attempts = attempts - 1;
-                if (attempts == 0) {
-                    var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
-                    res.render('error', error);
-
-                    // disables submit button for 15 minutes
-                    document.getElementById("submit").disabled=true;
-                    setTimeout(function(){  
-                        document.getElementById("submit").disabled=false;
-                    }, 15 * 60 * 1000);
-
-                    attempts = 3; // refresh attempts after lockout
-                }
-
-                else {
-                    var error = {error: 'You have entered an invalid username or password'}
-                    res.render('error', error);
-                }
+            if (result == null || result.isDeleted == true) {
+                var error = {error: 'Account does not exist'}
+                res.render('error', error);
             }
         	else if (result.username == username && result != null) {
         		bcrypt.compare(password, result.password, function (err, equal) {
@@ -79,25 +61,8 @@ const loginController = {
         				res.redirect('/profile/'+user.username);
         			}
                     else {
-                        attempts = attempts - 1;
-                        if (attempts == 0) {
-                            var error = {error: 'You have reached the maximum number of login attempts. Please try again later.'}
-                            res.render('error', error);
-
-                            // disables submit button for 15 minutes
-                            document.getElementById("submit").disabled=true;
-                            setTimeout(function(){  
-                                document.getElementById("submit").disabled=false;
-                            }, 15 * 60 * 1000);
-
-                            attempts = 3; // refresh attempts after lockout
-                        }
-
-                        else {
-                            var error = {error: 'You have entered an invalid username or password'}
-                            res.render('error', error);
-                        }
-                        
+                        var error = {error: 'Password does not match'}
+                        res.render('error', error);
                     }
         		});
             }

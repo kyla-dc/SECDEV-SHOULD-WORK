@@ -14,7 +14,9 @@ var user = {
 	numPosts: 2,
 	avatar: "../images/avatar/migsbb.png",
 	followers: [],
-	likes: []
+	likes: [], 
+	isDeleted: false 
+
 };
 
 db.insertOne(User, user, function(result) {
@@ -34,7 +36,8 @@ var user = {
 	numPosts: 0,
 	avatar: "../images/avatar/default.png",
 	followers: [],
-	likes: []
+	likes: [], 
+	isDeleted: false 
 };
 
 db.insertOne(User, user, function(result) {
@@ -54,7 +57,8 @@ var user = {
 	numPosts: 1,
 	avatar: "../images/avatar/default.png",
 	followers: [],
-	likes: []
+	likes: [], 
+	isDeleted: false 
 };
 
 db.insertOne(User, user, function(result) {
@@ -74,7 +78,8 @@ var user = {
 	numPosts: 1,
 	avatar: "../images/avatar/default.png",
 	followers: [],
-	likes: []
+	likes: [], 
+	isDeleted: false 
 };
 
 db.insertOne(User, user, function(result) {
@@ -94,7 +99,8 @@ var user = {
 	numPosts: 1,
 	avatar: "../images/avatar/default.png",
 	followers: [],
-	likes: []
+	likes: [], 
+	isDeleted: false
 };
 
 db.insertOne(User, user, function(result) {
@@ -114,7 +120,8 @@ var user = {
 	numPosts: 0,
 	avatar: "../images/avatar/dmitrilover.jpg",
 	followers: [],
-	likes: []
+	likes: [], 
+	isDeleted: false
 };
 
 db.insertOne(User, user, function(result) {

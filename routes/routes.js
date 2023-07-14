@@ -38,25 +38,25 @@ app.get('/changepassword/:username', profileController.getChangePassword);
 app.post('/postChangePassword', profileController.postChangePassword);
 app.get('/uploadPage/:username', profileController.getUploadPage);
 app.post('/upload', profileController.upload);
-app.post('/deleteAccount/:username/:userID', profileController.deleteAccount);
+app.post('/deleteAccount/:username/:userID', profileController.deleteAccount); 
 app.get('/viewposts/:username', postController.getViewUserPosts);
-app.post('/follow/:username', profileController.followAccount);
-app.get('/getFollowers/:username', profileController.getFollowers);
+app.post('/follow/:username', profileController.followAccount); /////////////////////
+app.get('/getFollowers/:username', profileController.getFollowers);//////////////////
 
 app.get('/feed', postController.getFeed);
-app.get('/feed/:username', postController.getFeed);
+app.get('/feed/:username', postController.getFeed);//////////////////////////////////
 app.get('/getNormalPosts', postController.getNormalPosts);
 app.get('/getUserPosts', postController.getUserPosts);
-app.post('/postLike/:postID', postController.postLike);
-app.get('/makePost/:username', postController.getMakePostPage);
+app.post('/postLike/:postID', postController.postLike);//////////////////////////////
+app.get('/makePost/:username', postController.getMakePostPage);//////////////////////
 app.post('/uploadPost', postController.uploadPost);
-app.post('/deletePost/:postID', postController.deletePost);
+app.post('/deletePost/:postID', postController.deletePost);//////////////////////////
 
-app.get('/comment/:postID', commentController.getComment);
+app.get('/comment/:postID', commentController.getComment);///////////////////////////
 app.get('/getPost', commentController.getPost);
 app.get('/getPostComments', commentController.getPostComments);
 app.post('/postComment', commentController.postComment);
-app.post('/deleteComment/:postID/:commentID', commentController.deleteComment);
+app.post('/deleteComment/:postID/:commentID', commentController.deleteComment);///////
 
 app.get('/search', searchController.getSearch);
 app.get('/getResults', searchController.getResults);

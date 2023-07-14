@@ -12,7 +12,8 @@ var post = {
 	contentPath: '../images/posts/10001.jpg',
 	description: 'test',
 	likes: [],
-	tags: ['#test']
+	tags: ['#test'], 
+	isDeleted: false
 };
 
 db.insertOne(Post, post, function(result) {
@@ -30,7 +31,8 @@ var post = {
 	contentPath: '../images/posts/10002.jpg',
 	description: 'longer test',
 	likes: [],
-	tags: ['#test']
+	tags: ['#test'], 
+	isDeleted: false
 };
 
 db.insertOne(Post, post, function(result) {
@@ -48,7 +50,8 @@ var post = {
 	contentPath: '../audio/posts/10021.mp3',
 	description: 'much longer test',
 	likes: [],
-	tags: ['#test']
+	tags: ['#test'], 
+	isDeleted: false
 };
 
 db.insertOne(Post, post, function(result) {
@@ -66,7 +69,8 @@ var post = {
 	contentPath: '../videos/posts/10031.mp4',
 	description: 'much longer test',
 	likes: [],
-	tags: ['#test2']
+	tags: ['#test2'], 
+	isDeleted: false
 };
 
 db.insertOne(Post, post, function(result) {
@@ -84,7 +88,8 @@ var post = {
 	contentPath: '../videos/posts/10041.mp4',
 	description: 'much longerest test description for testing purposes',
 	likes: [],
-	tags: ['#test2']
+	tags: ['#test2'], 
+	isDeleted: false
 };
 
 db.insertOne(Post, post, function(result) {

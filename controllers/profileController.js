@@ -12,9 +12,10 @@ const profileController = {
     getProfile: function (req, res) {
         var query = {
             username: req.params.username,
+            isDeleted: false
         };
 
-        var projection = 'userID firstName lastName username numPosts followers phone';
+        var projection = 'userID firstName lastName username numPosts followers phone isDeleted';
 
         db.findOne(Users, query, projection, function(result) {
             if(result != null) {
@@ -27,7 +28,8 @@ const profileController = {
                     username: result.username,
                     numPosts: result.numPosts,
                     phone: result.phone,
-                    followers: result.followers
+                    followers: result.followers,
+                    isDeleted: result.isDeleted
                 };
 
                 req.session.referral = '/profile/'+details.sessionname;
@@ -37,15 +39,17 @@ const profileController = {
                 res.render('profile', details);
             }
             else {
-                var error = 'Cannot find profile';
-                res.render('error', error);
+                // var error = 'Cannot find profile';
+                // res.render('error', error);
+                res.render('error');
             }
         });
     },
 
     getProfileAvatar: function (req, res) {
         var query = {
-            username: req.params.username
+            username: req.params.username, 
+            isDeleted: false
         }
 
         var projection = 'username avatar';
@@ -58,7 +62,7 @@ const profileController = {
         var username = req.params.username;
         
         var projection = 'postID posterID userPostNum username contentPath description likes comments tags';
-        
+
         db.findMany(Posts, {username, username}, projection, function (results) {
             res.render('profile', {results})
         });
@@ -66,7 +70,8 @@ const profileController = {
 
     getUploadPage: function (req, res) {
         var query = {
-            username: req.session.username
+            username: req.session.username, 
+            isDeleted: false
         }
 
         var projection = 'username avatar';
@@ -83,8 +88,9 @@ const profileController = {
                 res.render('uploadPage', details)
             }
             else {
-                var error = 'Cannot find profile';
-                res.render('error', {error});
+                // var error = 'Cannot find profile';
+                // res.render('error', {error});
+                res.render('error'); 
             }
         });
     },
@@ -135,7 +141,8 @@ const profileController = {
 
     getEditProfile: function (req, res) {
         var query = {
-            username: req.params.username
+            username: req.params.username,
+            isDeleted: false
         }
 
         var projection = 'firstName lastName username phone';
@@ -154,8 +161,9 @@ const profileController = {
                 res.render('editprofile', details)
             }
             else {
-                var error = 'Cannot find profile';
-                res.render('error', error);
+                // var error = 'Cannot find profile';
+                // res.render('error', error);
+                res.render('error'); 
             }
         });
     },
@@ -233,7 +241,8 @@ const profileController = {
 
     getChangePassword: function (req, res) {
         var query = {
-            username: req.params.username
+            username: req.params.username,
+            isDeleted: false
         }
 
         var projection = 'username password';
@@ -250,8 +259,9 @@ const profileController = {
                 res.render('changepass', details);
             }
             else {
-                var error = 'Cannot find profile';
-                res.render('error', error);
+                // var error = 'Cannot find profile';
+                // res.render('error', error);
+                res.render('error'); 
             }
         })
     },
@@ -317,24 +327,54 @@ const profileController = {
             userID: userID
         }
 
-        db.deleteOne(Users, query, function (result) {
-            if (result) {
+        // DONE
+        // User soft delete -- sets isDeleted to true instead of actually deleting the user 
+        // there's probably a better way to do this but this is what I have right now 
+        var projection = "username isDeleted"
+        
+        db.findOne(Users, query, projection, function (result) {
+          if (result != null) {
+              var oldInfo = {
+                  username: username,
+                  isDeleted: false   // not sure  
+              }
+              var newInfo = {
+                  username: username,
+                  isDeleted: true
+              }
 
-                query = {
-                    username: username
-                }
-
-                db.deleteMany(Posts, query, function (result) {
-                    if (result) {
-                        db.deleteMany(Comments, query, function (result) {
-                            if (result) {
-                                res.send(true);
-                            }
-                        });
-                    }
-                });
-            }
+              db.updateOne(Users, oldInfo, newInfo, function (result) {
+                  if (result) {
+                    db.updateMany(Posts, oldInfo, newInfo, function (result) {
+                      if (result) {
+                        db.updateMany(Comments, oldInfo, newInfo, function (result) {
+                          res.send(true); 
+                        }); 
+                      }
+                    }); 
+                  }
+               });
+           }
         });
+
+        // db.deleteOne(Users, query, function (result) {
+        //     if (result) {
+
+        //         query = {
+        //             username: username
+        //         }
+
+        //         db.deleteMany(Posts, query, function (result) {
+        //             if (result) {
+        //                 db.deleteMany(Comments, query, function (result) {
+        //                     if (result) {
+        //                         res.send(true);
+        //                     }
+        //                 });
+        //             }
+        //         });
+        //     }
+        // });
     },
 
     followAccount: function (req, res) {
