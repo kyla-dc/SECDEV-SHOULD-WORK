@@ -9,7 +9,8 @@ var comment = {
 	commentNum: 1,
 	postID: '10041',
 	username: 'migsbb',
-	content: 'lol'
+	content: 'lol', 
+	isDeleted: false
 };
 
 db.insertOne(Comment, comment, function(result) {
@@ -24,7 +25,8 @@ var comment = {
 	commentNum: 1,
 	postID: '10031',
 	username: 'iceice',
-	content: 'hey thats pretty nice'
+	content: 'hey thats pretty nice', 
+	isDeleted: false
 };
 
 db.insertOne(Comment, comment, function(result) {
@@ -39,7 +41,8 @@ var comment = {
 	commentNum: 1,
 	postID: '10041',
 	username: 'dmitrilover',
-	content: 'Looks like Dmitri'
+	content: 'Looks like Dmitri', 
+	isDeleted: false
 };
 
 db.insertOne(Comment, comment, function(result) {
@@ -54,7 +57,8 @@ var comment = {
 	commentNum: 2,
 	postID: '10041',
 	username: 'dmitrilover',
-	content: 'Wait no'
+	content: 'Wait no', 
+	isDeleted: false
 };
 
 db.insertOne(Comment, comment, function(result) {
@@ -69,7 +73,8 @@ var comment = {
 	commentNum: 3,
 	postID: '10041',
 	username: 'dmitrilover',
-	content: 'But maybe'
+	content: 'But maybe', 
+	isDeleted: false
 };
 
 db.insertOne(Comment, comment, function(result) {

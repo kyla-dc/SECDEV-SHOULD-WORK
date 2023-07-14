@@ -28,8 +28,8 @@ const searchController = {
 
 		// Search Posts
 		if (type == 'post') {
-			var projection = 'postID posterID username type contentPath description likes tags'
-			db.findMany(Posts, {description: {"$regex": searchQuery, "$options": "i"}}, projection, function (results) {
+			var projection = 'postID posterID username type contentPath description likes tags isDeleted'
+			db.findMany(Posts, {description: {"$regex": searchQuery, "$options": "i"}, isDeleted: "false"}, projection, function (results) {
 				res.send(results);
 			});
 		}
@@ -37,7 +37,7 @@ const searchController = {
 		// Search Users
 		if (type == 'user') {
 			var projection = 'userID username password email firstName lastName numPosts avatar followers liked';
-			db.findMany(Users, {username: {"$regex": searchQuery, "$options": "i"}}, projection, function (results) {
+			db.findMany(Users, {username: {"$regex": searchQuery, "$options": "i"}, isDeleted: "false"}, projection, function (results) {
 				res.send(results);
 			});
 		}
@@ -45,7 +45,7 @@ const searchController = {
 		// Search Comments
 		if (type == 'comment') {
 			var projection = 'commentID commenterID commentNum postID username content';
-			db.findMany(Comments, {content: {"$regex": searchQuery, "$options": "i"}}, projection, function (results) {
+			db.findMany(Comments, {content: {"$regex": searchQuery, "$options": "i"}, isDeleted: "false"}, projection, function (results) {
 				res.send(results);
 			});
 		}
