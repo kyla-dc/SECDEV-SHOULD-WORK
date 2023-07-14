@@ -1,6 +1,8 @@
 const db = require('../models/db.js');
 const User = require('../models/UserModel.js');
 const bcrypt = require('bcrypt');
+const path = require('path');
+const util = require('util');
 const saltRounds = 10;
 const initID = 1000;
 
@@ -20,21 +22,22 @@ const signupController = {
         var username = req.body.username;
         var password = req.body.password;
         var phone = req.body.phone;
+        var bcrypt_result = null;
 
-        function insert(userID, result) {
-            userID = result.length + initID;
+        function insert(avatarPath) {
+            var userID = bcrypt_result.length + initID;
             console.log(userID);
             var user = {
                 userID: userID,
                 username: username,
-                password: password,
+                password: bcrypt_password,
                 email: email,
                 firstName: firstName,
                 lastName: lastName,
                 phone: phone,
                 numPosts: 0,
                 followers: [],
-                avatar: '../images/default.png', 
+                avatar: avatarPath, 
                 isDeleted: false    
             }
 
@@ -45,13 +48,45 @@ const signupController = {
             });
         }
 
-        bcrypt.hash(password, saltRounds, function (err, hash) {
-            password = hash;
-            var userID = 1000;
-            db.findMany(User, {}, 'userID', function(result) {
-                insert(userID, result);
-            });
-        });
+        async function uploadPicture() {
+            try {
+                const username = req.body.username;
+                const file = req.files.file;
+                const fileName = file.name;
+                const size = file.data.length;
+                const extension = path.extname(fileName);
+    
+                const allowedExtensions = /png|jpeg|jpg/;
+    
+                if (!allowedExtensions.test(extension)) throw "Unsupported extension";
+                if (size > 12000000) throw "File must be less than 12MB";
+    
+                const md5 = file.md5;
+    
+                const URL = "/images/avatar/"+username+extension;
+    
+                avatarPath = ".."+URL;
+    
+                await util.promisify(file.mv)("./dist"+URL);
+
+                bcrypt.hash(password, saltRounds, function (err, hash) {
+                    bcrypt_password = hash;
+                    db.findMany(User, {}, 'userID', function(result) {
+                        console.log(result);
+                        bcrypt_result = result;
+                        insert(avatarPath);
+                    });
+                });                
+    
+            } catch (err) {
+                console.log(err);
+                res.status(500).json({
+                    message: err
+                });
+            }
+        }
+
+        uploadPicture()
     },
 
     getCheckUsername: function (req, res) {
