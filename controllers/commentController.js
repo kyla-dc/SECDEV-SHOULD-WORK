@@ -35,10 +35,11 @@ const commentController = {
 
 	getPostComments: function (req, res) {
 		var query = {
-			postID: req.query.postID
+			postID: req.query.postID,
+			isDeleted: false
 		}
 
-		var projection = 'commentID commenterID commentNum postID username content';
+		var projection = 'commentID commenterID commentNum postID username content isDeleted';
 
 		db.findMany(Comments, query, projection, function (results) {
 			if (results != null) {
@@ -106,11 +107,11 @@ const commentController = {
 
 		db.findOne(Comments, query, projection, function (result){
 			var oldInfo = {
-				postID: postID,
-				isDeleted: result.isDeleted   //it might be better if this checks if isDeleted = false 
+				commentID: commentID,
+				isDeleted: false   //not sure 
 			}
 			var newInfo = {
-				postID: postID,
+				commentID: commentID,
 				isDeleted: true 
 			}
 

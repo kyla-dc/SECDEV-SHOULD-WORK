@@ -21,6 +21,7 @@ const postController = {
 		res.render('feed', details);
 	},
 
+	// THIS ONE DOESN'T WORK but it's not broken either 
 	getViewUserPosts: function (req, res) {
 		var sessionname = req.session.username;
 		var feedname = req.params.username;
@@ -30,15 +31,33 @@ const postController = {
 			feedname: feedname
 		}
 
-		req.session.referral = '/viewposts/'+feedname;
+		// console.log(sessionname); 
+		// console.log(feedname); 
+		// console.log("_______")
 
-		res.render('viewposts', details);
+		var projection = 'username isDeleted'
+
+		db.findMany(Posts, {username: feedname, isDeleted: "false"}, projection, function (results) {
+			
+			console.log(results.isDeleted)
+
+			if(results != null){
+				req.session.referral = '/viewposts/'+feedname;
+
+				res.render('viewposts', details);
+			}
+			else{
+				// var error = 'Cannot find profile';
+                // res.render('error', error);
+                res.render('error');
+			}
+		});	
 	},
 
 	getNormalPosts: function (req, res) {
-		var projection = 'postID posterID userPostNum username type contentPath description likes tags'
-
-		db.findMany(Posts, {}, projection, function (results) {
+		var projection = 'postID posterID userPostNum username type contentPath description likes tags isDeleted'
+		
+		db.findMany(Posts, {isDeleted: false}, projection, function (results) {
 			res.send(results);
 		});
 	},
@@ -148,9 +167,10 @@ const postController = {
 
 	getUserPosts: function (req, res) {
 		var query = {
-			username: req.query.feedname
+			username: req.query.feedname,
+			isDeleted: false
 		}
-		var projection = 'postID posterID userPostNum username type contentPath description likes tags'
+		var projection = 'postID posterID userPostNum username type contentPath description likes tags isDeleted'
 
 		db.findMany(Posts, query, projection, function (results) {
 			res.send(results);
@@ -256,7 +276,7 @@ const postController = {
 			if (result){
 				var oldInfo = {
 					postID: postID,
-					isDeleted: result.isDeleted   //it might be better if this checks if isDeleted = false 
+					isDeleted: false   //not sure 
 				}
 				var newInfo = {
 					postID: postID,
