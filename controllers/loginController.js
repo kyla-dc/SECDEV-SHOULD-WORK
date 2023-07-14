@@ -48,8 +48,8 @@ const loginController = {
         db.findOne(Users, user, projection, function(result) {  
             console.log(result);
             if (result == null || result.isDeleted == true) {
-                var error = {error: 'Account does not exist'}
-                res.render('error', error);
+                var error = {error: 'Account does not exist / Password not found'}
+                res.send('error', error);
             }
         	else if (result.username == username && result != null) {
         		bcrypt.compare(password, result.password, function (err, equal) {
@@ -61,8 +61,8 @@ const loginController = {
         				res.redirect('/profile/'+user.username);
         			}
                     else {
-                        var error = {error: 'Password does not match'}
-                        res.render('error', error);
+                        var error = {error: 'Account does not exist / Password not found'}
+                        res.send('error', error);
                     }
         		});
             }
