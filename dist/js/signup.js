@@ -69,7 +69,7 @@ $(document).ready(function () {
 
     $('#phone').keyup(function () {
         var phone = $('#phone').val();
-        var PhoneRegex = /^\+?[0-9]{1,3}-?[0-9]{1,14}$/
+        var PhoneRegex = /((^(\+)(\d){12}$)|(^\d{11}$))/
 
         if(PhoneRegex.test(phone)) {
             $('#phone').css('background-color', '#E3E3E3');
