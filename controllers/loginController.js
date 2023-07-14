@@ -17,12 +17,12 @@ const loginController = {
             username: username,
         }
 
-        var projection = 'username password';
+        var projection = 'username password isDeleted';
 
         db.findOne(Users, user, projection, function (result) {
             if (result != null) {
                 bcrypt.compare(password, result.password, function (err, equal) {
-                    if (equal) {
+                    if (equal && result.isDeleted == false) {
                         res.send(true);
                     }
                     else {
@@ -43,11 +43,11 @@ const loginController = {
         	username: username
         }
 
-        var projection = 'userID username password';
+        var projection = 'userID username password isDeleted';
 
         db.findOne(Users, user, projection, function(result) {  
             console.log(result);
-            if (result == null) {
+            if (result == null || result.isDeleted == true) {
                 var error = {error: 'Account does not exist'}
                 res.render('error', error);
             }
