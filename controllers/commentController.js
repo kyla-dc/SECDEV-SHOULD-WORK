@@ -74,7 +74,8 @@ const commentController = {
 					commentNum: commentsNum,
 					postID: postID,
 					username: req.session.username,
-					content: req.body.commentAreaContent
+					content: req.body.commentAreaContent,
+					isDeleted: false
 				}
 
 				db.insertOne(Comments, comment, function (result) {
@@ -87,6 +88,9 @@ const commentController = {
 		});
 	},
 
+	// DONE
+	// Comment soft delete -- sets isDeleted to true instead of actually deleting the comment 
+    // there's probably a better way to do this but this is what I have right now 
 	deleteComment: function (req, res) {
 		var postID = req.params.postID;
 		var username = req.session.username;
@@ -98,10 +102,29 @@ const commentController = {
 			username: username
 		}
 
-		db.deleteOne(Comments, query, function (result) {
-			if (result)
-				res.send(true);
-		});
+		var projection = "commentID postID username isDeleted"
+
+		db.findOne(Comments, query, projection, function (result){
+			var oldInfo = {
+				postID: postID,
+				isDeleted: result.isDeleted   //it might be better if this checks if isDeleted = false 
+			}
+			var newInfo = {
+				postID: postID,
+				isDeleted: true 
+			}
+
+			db.updateOne(Comments, oldInfo, newInfo, function (result) {
+				if (result) {
+					res.send(true); 
+				}
+			 });
+		}); 
+
+		// db.deleteOne(Comments, query, function (result) {
+		// 	if (result)
+		// 		res.send(true);
+		// });
 	}
 }
 

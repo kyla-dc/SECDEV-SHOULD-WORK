@@ -100,7 +100,8 @@ const postController = {
 				contentPath: contentPath,
 				description: description,
 				likes: [],
-				tags: tagsArray
+				tags: tagsArray,
+				isDeleted: false
 			}
 
 			console.log('postID: '+postID);
@@ -239,6 +240,9 @@ const postController = {
 		});
 	},
 
+	// DONE
+	// Post soft delete -- sets isDeleted to true instead of actually deleting the post 
+    // there's probably a better way to do this but this is what I have right now 
 	deletePost: function (req, res) {
 		var postID = req.params.postID;
 		var query = {
@@ -246,41 +250,92 @@ const postController = {
 		}
 		console.log(postID);
 
-		db.deleteOne(Posts, query, function (result) {
-			if (result) {
-				db.deleteMany(Comments, query, function (result) {
-					var query = {
-						username: req.session.username
-					}
+		var projection = "postID isDeleted"
 
-					var projection = 'username numPosts';
+		db.findOne(Posts, query, projection, function (result) {
+			if (result){
+				var oldInfo = {
+					postID: postID,
+					isDeleted: result.isDeleted   //it might be better if this checks if isDeleted = false 
+				}
+				var newInfo = {
+					postID: postID,
+					isDeleted: true
+				}
 
-					db.findOne(Users, query, projection, function (result) {
-						if (result != null) {
-							var oldPostNum = result.numPosts;
-							var newPostNum = clone(oldPostNum);
-
-							var oldInfo = {
-								username: req.session.username,
-								numPosts: oldPostNum
+				db.updateOne(Posts, oldInfo, newInfo, function (result) {
+					if (result){
+						db.updateMany(Comments, oldInfo, newInfo, function (result){
+							var query = {
+								username: req.session.username
 							}
-
-							newPostNum--;
-
-							var newInfo = {
-								username: req.session.username,
-								numPosts: newPostNum
-							}
-
-							db.updateOne(Users, oldInfo, newInfo, function (result) {
-								if (result)
-									res.send(true);
+		
+							var projection = 'username numPosts';
+		
+							db.findOne(Users, query, projection, function (result) {
+								if (result != null) {
+									var oldPostNum = result.numPosts;
+									var newPostNum = clone(oldPostNum);
+		
+									var oldInfo = {
+										username: req.session.username,
+										numPosts: oldPostNum
+									}
+		
+									newPostNum--;
+		
+									var newInfo = {
+										username: req.session.username,
+										numPosts: newPostNum
+									}
+		
+									db.updateOne(Users, oldInfo, newInfo, function (result) {
+										if (result)
+											res.send(true);
+									});
+								}
 							});
-						}
-					});
-				});
+						}); 
+					}
+				}); 
 			}
 		});
+
+		// db.deleteOne(Posts, query, function (result) {
+		// 	if (result) {
+		// 		db.deleteMany(Comments, query, function (result) {
+		// 			var query = {
+		// 				username: req.session.username
+		// 			}
+
+		// 			var projection = 'username numPosts';
+
+		// 			db.findOne(Users, query, projection, function (result) {
+		// 				if (result != null) {
+		// 					var oldPostNum = result.numPosts;
+		// 					var newPostNum = clone(oldPostNum);
+
+		// 					var oldInfo = {
+		// 						username: req.session.username,
+		// 						numPosts: oldPostNum
+		// 					}
+
+		// 					newPostNum--;
+
+		// 					var newInfo = {
+		// 						username: req.session.username,
+		// 						numPosts: newPostNum
+		// 					}
+
+		// 					db.updateOne(Users, oldInfo, newInfo, function (result) {
+		// 						if (result)
+		// 							res.send(true);
+		// 					});
+		// 				}
+		// 			});
+		// 		});
+		// 	}
+		// });
 	}
 }
 

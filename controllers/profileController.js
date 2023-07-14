@@ -317,24 +317,54 @@ const profileController = {
             userID: userID
         }
 
-        db.deleteOne(Users, query, function (result) {
-            if (result) {
+        // DONE
+        // User soft delete -- sets isDeleted to true instead of actually deleting the user 
+        // there's probably a better way to do this but this is what I have right now 
+        var projection = "username isDeleted"
+        
+        db.findOne(Users, query, projection, function (result) {
+          if (result != null) {
+              var oldInfo = {
+                  username: username,
+                  isDeleted: result.isDeleted   //it might be better if this checks if isDeleted = false 
+              }
+              var newInfo = {
+                  username: username,
+                  isDeleted: true
+              }
 
-                query = {
-                    username: username
-                }
-
-                db.deleteMany(Posts, query, function (result) {
-                    if (result) {
-                        db.deleteMany(Comments, query, function (result) {
-                            if (result) {
-                                res.send(true);
-                            }
-                        });
-                    }
-                });
-            }
+              db.updateOne(Users, oldInfo, newInfo, function (result) {
+                  if (result) {
+                    db.updateMany(Posts, oldInfo, newInfo, function (result) {
+                      if (result) {
+                        db.updateMany(Comments, oldInfo, newInfo, function (result) {
+                          res.send(true); 
+                        }); 
+                      }
+                    }); 
+                  }
+               });
+           }
         });
+
+        // db.deleteOne(Users, query, function (result) {
+        //     if (result) {
+
+        //         query = {
+        //             username: username
+        //         }
+
+        //         db.deleteMany(Posts, query, function (result) {
+        //             if (result) {
+        //                 db.deleteMany(Comments, query, function (result) {
+        //                     if (result) {
+        //                         res.send(true);
+        //                     }
+        //                 });
+        //             }
+        //         });
+        //     }
+        // });
     },
 
     followAccount: function (req, res) {
