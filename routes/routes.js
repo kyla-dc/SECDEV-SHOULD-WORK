@@ -12,6 +12,7 @@ const logoutController = require('../controllers/logoutController.js');
 const postController = require('../controllers/postController.js');
 const commentController = require('../controllers/commentController.js');
 const searchController = require('../controllers/searchController.js');
+const adminController = require('../controllers/adminController.js');
 
 const app = express();
 
@@ -77,5 +78,7 @@ app.get('/tabs/:URL', tabsController.getTabsURL);
 app.get('/metronome', metronomeController.getMetro);
 
 app.get('/back', controller.getBack);
+
+app.get('/adminpanel', adminController.getAdminPage);
 
 module.exports = app;
