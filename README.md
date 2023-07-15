@@ -34,8 +34,7 @@ node add_commentdata.js
 node add_tabsdata.js
 ```
 4. Press Ctrl + C to continue typing commands
-5. Rename "example.env" to just ".env"
-6. Then run the server with:
+5. Run the server with:
 ```
 node app.js
 ```
