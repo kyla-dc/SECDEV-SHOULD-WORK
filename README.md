@@ -42,7 +42,7 @@ node app.js
 
 ## Database Schema
 
-<img src = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/blob/milestone1/schema.png" width = "300">
+<img src = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/blob/milestone1/schema.png">
 
 ## User Credentials
 
@@ -57,10 +57,10 @@ Password: admin1234
 
 | Folder | Description |
 | --- | --- |
-| <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/controllers"><code>controllers</code></a> | Contains the JavaScript files that define callback functions for client-side requests |
-| <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/dist"><code>dist</code></a> | Contains the static CSS and JavaScript files, as well as the project assets (images and audio files), for front-end display |
-| <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/helpers"><code>helpers</code> | Contains the JavaScript files that define helper functions for front-end display and server-side validation | 
-| <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/misc"><code>misc</code></a> | Contains the JavaScript files for initial database population |
-| <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/models"><code>models</code></a> | Contains the JavaScript files for database modeling and access | 
-| <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/routes"><code>routes</code></a> | Contains the JavaScript file that defines the server response to each HTTP method request |
-| <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/views"><code>views</code></a> | Contains the Handlebars template files to be rendered and displayed upon request |
+| <a href = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/tree/milestone1/controllers"><code>controllers</code></a> | Contains the JavaScript files that define callback functions for client-side requests |
+| <a href = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/tree/milestone1/dist"><code>dist</code></a> | Contains the static CSS and JavaScript files, as well as the project assets (images and audio files), for front-end display |
+| <a href = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/tree/milestone1/helpers"><code>helpers</code> | Contains the JavaScript files that define helper functions for front-end display and server-side validation | 
+| <a href = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/tree/milestone1/misc"><code>misc</code></a> | Contains the JavaScript files for initial database population |
+| <a href = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/tree/milestone1/models"><code>models</code></a> | Contains the JavaScript files for database modeling and access | 
+| <a href = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/tree/milestone1/routes"><code>routes</code></a> | Contains the JavaScript file that defines the server response to each HTTP method request |
+| <a href = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/tree/milestone1/views"><code>views</code></a> | Contains the Handlebars template files to be rendered and displayed upon request |
