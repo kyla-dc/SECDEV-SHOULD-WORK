@@ -40,9 +40,9 @@ node add_tabsdata.js
 node app.js
 ```
 
-## Running Online
+## Database Schema
 
-The website can be found at: https://music-ic.herokuapp.com/
+<img src = "https://github.com/DLSU-CCAPDEV/2021T2-G42/blob/Phase-3/dist/images/logo.png" width = "300">
 
 ## User Credentials
 
@@ -64,17 +64,3 @@ Password: admin1234
 | <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/models"><code>models</code></a> | Contains the JavaScript files for database modeling and access | 
 | <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/routes"><code>routes</code></a> | Contains the JavaScript file that defines the server response to each HTTP method request |
 | <a href = "https://github.com/DLSU-CCAPDEV/2021T2-G42/tree/main/views"><code>views</code></a> | Contains the Handlebars template files to be rendered and displayed upon request |
-
-## Authors
-
-Miguel Baliog
-  - Github: https://github.com/Beefi
-  - Email: miguel_baliog@dlsu.edu.ph
-
-Isaiah Majarreis
-  - Github: https://github.com/isaiahmajarreis
-  - Email: isaiah_majarreis@dlsu.edu.ph
-
-Franchesca Lopez
-  - Github: https://github.com/HEYiMiaa
-  - Email: maria_franchesca_lopez@dlsu.edu.ph
