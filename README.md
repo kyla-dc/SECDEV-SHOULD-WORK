@@ -46,11 +46,23 @@ node app.js
 
 ## User Credentials
 
-A few users are already provided within the database but this is one blank slate that you can freely do whatever you wish:
+Regular User:
+```
+Username: iceice
+Password: testpass
+```
 
+Admin:
 ```
 Username: admin
 Password: admin1234
+```
+
+## Admin Page
+
+To view the Admin Page, redirect in your search bar 
+```
+localhost:3000/adminpanel
 ```
 
 ### The project structured as such: 
