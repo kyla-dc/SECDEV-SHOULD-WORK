@@ -42,7 +42,7 @@ node app.js
 
 ## Database Schema
 
-<img src = "https://github.com/DLSU-CCAPDEV/2021T2-G42/blob/Phase-3/dist/images/logo.png" width = "300">
+<img src = "https://github.com/foodequalslife2/SECDEV-WITH-FRAN/blob/milestone1/schema.png" width = "300">
 
 ## User Credentials
 
@@ -53,7 +53,7 @@ Username: admin
 Password: admin1234
 ```
 
-### The project structured as such:
+### The project structured as such: 
 
 | Folder | Description |
 | --- | --- |
