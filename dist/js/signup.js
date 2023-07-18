@@ -46,6 +46,48 @@ $(document).ready(function () {
             $("#submit").prop("disabled", true);
             flag2=0;
         }
+
+        var confirm_password = $("#confirm_password").val();
+
+        if (confirm_password && confirm_password.value) {
+            if (password != confirm_password) {
+                $("#confirm_password").css("background-color", "red");
+                $('#invalid_confirm_password').css("display", "block");
+                $("#submit").prop("disabled", true);
+                flag2=0;
+            }
+            else {
+                $("#confirm_password").css("background-color", "white");
+                $('#invalid_confirm_password').css("display", "none");
+                flag2 = 1;
+                enableSubmitButton();
+            }
+        }
+        else {
+            $("#confirm_password").css("background-color", "red");
+            $('#invalid_confirm_password').css("display", "block");
+            $("#submit").prop("disabled", true);
+            flag2=0;
+        }
+    });
+
+    $("#confirm_password").keyup(function() 
+    {
+        var password = $("#password").val();
+        var confirm_password = $("#confirm_password").val();
+
+        if (password != confirm_password) {
+            $("#confirm_password").css("background-color", "red");
+            $('#invalid_confirm_password').css("display", "block");
+            $("#submit").prop("disabled", true);
+            flag2=0;
+        }
+        else {
+            $("#confirm_password").css("background-color", "white");
+            $('#invalid_confirm_password').css("display", "none");
+            flag2 = 1;
+            enableSubmitButton();
+        }
     });
 
     $('#email').keyup(function () {
