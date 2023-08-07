@@ -24,6 +24,7 @@ $(document).ready(function () {
     {
         var password = $("#password").val();
         var passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        console.log(password);
 
         if (passwordRegex.test(password)) {
             $.get('/getCheckPassword', {password: password}, function(result) {

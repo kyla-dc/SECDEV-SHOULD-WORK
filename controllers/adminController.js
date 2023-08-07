@@ -1,4 +1,4 @@
-const db = require('../models/db.js');
+const db = require('../models/mysqldb.js');
 const Users = require('../models/UserModel.js');
 
 const adminController = {
@@ -9,8 +9,10 @@ const adminController = {
 
         projection = 'userID username'
 
-        db.findOne(Users, query, projection, function(result) {
-            if (result.userID == 1001) {
+        var query = 'SELECT * from `user` WHERE username = "' + username + '";';
+        
+        db.query(query).then((result) => {
+            if (result[0].userID == 1001) {
                 var details = {
                     adminmsg: "Hello Admin"
                 };

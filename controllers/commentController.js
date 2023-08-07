@@ -1,4 +1,4 @@
-const db = require('../models/db.js');
+const db = require('../models/mysqldb.js');
 const Users = require('../models/UserModel.js');
 const Posts = require('../models/PostModel.js');
 const Comments = require('../models/CommentModel.js');
@@ -20,50 +20,45 @@ const commentController = {
 	},
 
 	getPost: function (req, res) {
-		var query = {
-			postID: req.query.postID
-		}
+		var postID = req.query.postID;
 
-		var projection = 'postID posterID userPostNum username type contentPath description likes tags';
-
-		db.findOne(Posts, query, projection, function (result) {
+		var query = 'SELECT * from `post` WHERE postID = ' + postID + ';';
+		
+		db.query(query).then((result) => {
 			if (result != null) {
-				res.send(result);
+				res.send(result[0]);
 			} 
 		});
 	},
 
 	getPostComments: function (req, res) {
-		var query = {
-			postID: req.query.postID,
-			isDeleted: false
-		}
+		var postID = req.query.postID;
 
-		var projection = 'commentID commenterID commentNum postID username content isDeleted';
+		var query = 'SELECT * from `comment` WHERE postID = ' + postID + ';';
 
-		db.findMany(Comments, query, projection, function (results) {
-			if (results != null) {
-				res.send(results);
+		db.query(query).then((result) => {
+			if (result != null) {
+				res.send(result);
 			}
-		})
+		});
 	},
 
 	postComment: function (req, res) {
 		var postID = req.body.formPostID;
 
-		var query = {
-			username: req.session.username
-		}
+		var username = req.session.username;
 
 		var projection = 'userID username';
 
-		db.findOne(Users, query, projection, function (result) {
+		var query = 'SELECT * from `user` where username = "' + username + '";';
+
+		db.query(query).then((result) => {
 			if (result != null) {
-				console.log('User found: ' + result.username);
-				console.log('Commenter ID: ' + result.userID);
+				console.log('User found: ' + result[0].username);
+				console.log('Commenter ID: ' + result[0].userID);
 				console.log('Post ID: ' + postID);
 
-				var commenterID = result.userID;
+				var commenterID = result[0].userID;
 				var commentsNum = req.body.commentsNum;
 				commentsNum++;
 				console.log(commentsNum);
@@ -72,14 +67,15 @@ const commentController = {
 				var comment = {
 					commentID: commentID,
 					commenterID: commenterID,
-					commentNum: commentsNum,
 					postID: postID,
 					username: req.session.username,
 					content: req.body.commentAreaContent,
-					isDeleted: false
+					isDeleted: 0
 				}
 
-				db.insertOne(Comments, comment, function (result) {
+				var query = "INSERT INTO `comment` (commentID, commenterID, postID, username, content, isDeleted) values ('" +  comment.commentID + "', '" +  comment.commenterID + "', '" +  comment.postID + "', '" +  comment.username + "', '" +  comment.content + "', '" +  comment.isDeleted + "');";
+
+				db.query(query).then((result) => {
 					if (result != null) {
 						console.log('Added Comment: '+commentID);
 						res.redirect('/back');
@@ -97,30 +93,13 @@ const commentController = {
 		var username = req.session.username;
 		var commentID = req.params.commentID;
 
-		var query = {
-			commentID: commentID,
-			postID: postID,
-			username: username
-		}
+		var query = 'DELETE from `comment` WHERE postID = ' + postID + ' AND commentID = ' + commentID + ';'; 
 
-		var projection = "commentID postID username isDeleted"
-
-		db.findOne(Comments, query, projection, function (result){
-			var oldInfo = {
-				commentID: commentID,
-				isDeleted: false   //not sure 
+		db.query(query).then((result) => {
+			if (result != null) {
+				res.send(true);
 			}
-			var newInfo = {
-				commentID: commentID,
-				isDeleted: true 
-			}
-
-			db.updateOne(Comments, oldInfo, newInfo, function (result) {
-				if (result) {
-					res.send(true); 
-				}
-			 });
-		}); 
+		});
 
 		// db.deleteOne(Comments, query, function (result) {
 		// 	if (result)

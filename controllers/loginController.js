@@ -1,5 +1,4 @@
-const db = require('../models/db.js');
-const Users = require('../models/UserModel.js');
+const db = require('../models/mysqldb.js');
 const bcrypt = require('bcrypt');
 
 const loginController = {
@@ -9,20 +8,16 @@ const loginController = {
 		res.render('login');
 	},
 
-    getPassword: function (req, res) {
+    getPassword: async (req, res) => {
         var username = req.query.username;
         var password = req.query.password;
 
-        var user = {
-            username: username,
-        }
+        var query = 'SELECT * from `user` WHERE username = "' + username + '";';
 
-        var projection = 'username password isDeleted';
-
-        db.findOne(Users, user, projection, function (result) {
+        await db.query(query).then((result) => {
             if (result != null) {
-                bcrypt.compare(password, result.password, function (err, equal) {
-                    if (equal && result.isDeleted == false) {
+                bcrypt.compare(password, result[0].password, function (err, equal) {
+                    if (equal && result[0].isDeleted == 0) {
                         res.send(true);
                     }
                     else {
@@ -36,29 +31,26 @@ const loginController = {
         });
     },
 
-	postLogin: function (req, res) {
+	postLogin: async (req, res) =>{
         var username = req.body.username;
         var password = req.body.password;
-        var user = {
-        	username: username
-        }
 
-        var projection = 'userID username password isDeleted';
+        var query = 'SELECT * from `user` WHERE username = "' + username + '";';
+        var querypass = null;
 
-        db.findOne(Users, user, projection, function(result) {  
-            console.log(result);
-            if (result == null || result.isDeleted == true) {
+        await db.query(query).then((result) => {
+            if (result == null || result[0].isDeleted == 1) {
                 var error = {error: 'Account does not exist / Password not found'}
                 res.send('error', error);
             }
-        	else if (result.username == username && result != null) {
-        		bcrypt.compare(password, result.password, function (err, equal) {
+        	else if (result[0].username == username && result != null) {
+        		bcrypt.compare(password, result[0].password, function (err, equal) {
             		if (equal) {
-                        req.session.username = user.username;
-                        req.session.userID = result.userID;
+                        req.session.username = result[0].username;
+                        req.session.userID = result[0].userID;
                         
                         console.log("Session: "+req.session.username);
-        				res.redirect('/profile/'+user.username);
+        				res.redirect('/profile/'+result[0].username);
         			}
                     else {
                         var error = {error: 'Account does not exist / Password not found'}

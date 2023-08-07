@@ -26,7 +26,9 @@
     "express-validator": "^6.11.1",
     "hbs": "^4.1.2",
     "mongodb": "^3.7.4",
-    "mongoose": "^5.12.5"
+    "mongoose": "^5.12.5",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.0"
   },
   "bugs": {
     "url": "https://github.com/DLSU-CCAPDEV/2021T2-G42/issues"
