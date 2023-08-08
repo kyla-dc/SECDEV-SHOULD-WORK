@@ -3,9 +3,7 @@ const Users = require('../models/UserModel.js');
 
 const adminController = {
     getAdminPage: function (req, res) {
-        var query = {
-            username: req.session.username
-        }
+        var username = req.session.username;
 
         projection = 'userID username'
 

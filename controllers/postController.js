@@ -5,6 +5,7 @@ const Comments = require('../models/CommentModel.js');
 const path = require('path');
 const util = require('util');
 const clone = require('clone');
+const Logger = require('../controllers/logController.js');
 
 const postController = {
 	getFeed: function (req,res) {
@@ -115,7 +116,7 @@ const postController = {
 				type: type,
 				contentPath: contentPath,
 				description: description,
-				likes: [],
+				likes: 0,
 				tags: tagsArray,
 				isDeleted: false
 			}
@@ -130,6 +131,8 @@ const postController = {
 			console.log('tags: '+tagsArray);
 
 			var query = "INSERT INTO `post` (postID, posterID, username, type, contentPath, description, likes, isDeleted) values ('" + post.postID + "', '" + post.posterID + "', '" + post.username + "', '" + post.type + "', '" + post.contentPath + "', '" + post.description + "', '" + post.likes + "', '" + "0" + "');";
+
+			Logger.logAction('Posted ' + post.postID , post.username);
 
 			db.query(query).then((result) => {
 				if (result) {
@@ -239,14 +242,15 @@ const postController = {
     // there's probably a better way to do this but this is what I have right now 
 	deletePost: function (req, res) {
 		var postID = req.params.postID;
+		var username = req.session.username;
 		var query = {
 			postID: postID
 		}
 		console.log(postID);
 
-		var projection = "postID isDeleted"
-
 		var query = 'DELETE from `post` WHERE postID = ' + postID + ';';
+
+		Logger.logAction('Deleted post ' + postID, username);
 
 		db.query(query).then((result) => {
 			if (result != null) {

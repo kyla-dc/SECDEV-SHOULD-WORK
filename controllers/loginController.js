@@ -1,5 +1,6 @@
 const db = require('../models/mysqldb.js');
 const bcrypt = require('bcrypt');
+const Logger = require('../controllers/logController.js');
 
 const loginController = {
     getLogin: function (req, res) {
@@ -50,6 +51,11 @@ const loginController = {
                         req.session.userID = result[0].userID;
                         
                         console.log("Session: "+req.session.username);
+
+                        var date = new Date().toJSON().slice(0, 10);
+
+                        Logger.logAction('User logged in at ' + date, req.session.username);
+
         				res.redirect('/profile/'+result[0].username);
         			}
                     else {

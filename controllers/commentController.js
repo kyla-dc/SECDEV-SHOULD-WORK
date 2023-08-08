@@ -2,6 +2,7 @@ const db = require('../models/mysqldb.js');
 const Users = require('../models/UserModel.js');
 const Posts = require('../models/PostModel.js');
 const Comments = require('../models/CommentModel.js');
+const Logger = require('../controllers/logController.js');
 
 const commentController = {
 	// Gets the Commenting page
@@ -75,6 +76,8 @@ const commentController = {
 
 				var query = "INSERT INTO `comment` (commentID, commenterID, postID, username, content, isDeleted) values ('" +  comment.commentID + "', '" +  comment.commenterID + "', '" +  comment.postID + "', '" +  comment.username + "', '" +  comment.content + "', '" +  comment.isDeleted + "');";
 
+				Logger.logAction('Commented on ' + comment.postID, comment.username);
+
 				db.query(query).then((result) => {
 					if (result != null) {
 						console.log('Added Comment: '+commentID);
@@ -94,6 +97,8 @@ const commentController = {
 		var commentID = req.params.commentID;
 
 		var query = 'DELETE from `comment` WHERE postID = ' + postID + ' AND commentID = ' + commentID + ';'; 
+
+		Logger.logAction('Deleted ' + commentID + ' On post ' + postID, username);
 
 		db.query(query).then((result) => {
 			if (result != null) {

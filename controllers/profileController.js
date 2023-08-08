@@ -7,6 +7,7 @@ const path = require('path');
 const util = require('util');
 const clone = require('clone');
 const saltRounds = 10;
+const Logger = require('../controllers/logController.js');
 
 const profileController = {
     getProfile: function (req, res) {
@@ -63,30 +64,32 @@ const profileController = {
     },
 
     getUploadPage: function (req, res) {
-        var query = 'SELECT username, avatar from `user` WHERE username = "' + username + '";';
-        
-        db.query(query).then((result) => { 
-          if (result != null) {
-            var details = {
-                username: result[0].username,
-                avatar: result[0].avatar
-            };
+      var username = req.session.username;
 
-            req.session.referral = '/uploadPage/'+query.username;
+      var query = 'SELECT username, avatar from `user` WHERE username = "' + username + '";';
+      
+      db.query(query).then((result) => { 
+        if (result != null) {
+          var details = {
+              username: result[0].username,
+              avatar: result[0].avatar
+          };
 
-            res.render('uploadPage', details)
-          }
-          else {
-              // var error = 'Cannot find profile';
-              // res.render('error', {error});
-              res.render('error'); 
-          }
-        });
+          req.session.referral = '/uploadPage/'+query.username;
+
+          res.render('uploadPage', details)
+        }
+        else {
+            // var error = 'Cannot find profile';
+            // res.render('error', {error});
+            res.render('error'); 
+        }
+      });
     },
 
     upload: async function (req, res) {
         try {
-          var username = req.body.hiddenUsername;
+          var username = req.session.username;
 
           const file = req.files.file;
           const fileName = file.name;
@@ -101,17 +104,20 @@ const profileController = {
 
           const md5 = file.md5;
 
-          const URL = "/images/avatar/"+hiddenInfo.username+extension;
+          const URL = "/images/avatar/"+username+extension;
 
           var avatarPath = ".."+URL
 
           await util.promisify(file.mv)("./dist"+URL);
 
-          var query = 'UPDATE `user` SET "avatar" = "' + avatarPath + '" WHERE username = "' + username;
+          var query = 'UPDATE `user` SET avatar = "' + avatarPath + '" WHERE username = "' + username + '";';
 
           db.query(query).then((result) => {
             if (result != null) {
-              var username = newInfo.username;
+              var username = req.session.username;
+              
+              Logger.logAction("User changed avatar photo at path " + avatarPath, username);
+
               res.redirect('/profile/'+username);
             }
           });
@@ -173,7 +179,7 @@ const profileController = {
         console.log(hiddenInfo.username + " to " + newInfo.username);
       
         // Check if the username already exists
-        var query = 'SELECT username, avatar from `user` WHERE username = "' + username + '";';
+        var query = 'SELECT username, avatar from `user` WHERE username = "' + newname + '";';
         
         db.query(query).then((result) => {
           if (result[0] && !(newname === hiddenInfo.username)) {
@@ -200,10 +206,13 @@ const profileController = {
           } else {
             // Phone number is valid and username is unique, continue with the update
 
-            var query = 'UPDATE `user` SET username = "' + newInfo.username + '", firstName = "' + newInfo.firstName + '", lastName = "' + newInfo.lastName + '", phone = "' + newInfo.phone + '";';
+            var query = 'UPDATE `user` SET username = "' + newInfo.username + '", firstName = "' + newInfo.firstName + '", lastName = "' + newInfo.lastName + '", phone = ' + newInfo.phone + ' WHERE username = "' + hiddenInfo.username +'";';
+            
 
             db.query(query).then((result) => {
               if (result != null) {
+                Logger.logAction('User updated profile information from ' + hiddenInfo.username + ', ' + hiddenInfo.firstName + ', ' + hiddenInfo.lastName + ', ' + hiddenInfo.phone + ' to ' + newInfo.username + ', ' + newInfo.firstName + ', ' + newInfo.lastName + ', ' + newInfo.phone, newInfo.username);
+
                 var oldPostQ = {
                   username: hiddenInfo.username
                 }
@@ -227,9 +236,7 @@ const profileController = {
     },
 
     getChangePassword: function (req, res) {
-        var username = req.params.username;
-
-        var projection = 'username password';
+        var username = req.session.username;
 
         var query = 'SELECT username, password from `user` WHERE username = "' + username + '";';
 
@@ -265,7 +272,7 @@ const profileController = {
         password: req.body.newPassword
       }
     
-      var query = 'SELECT userID, username, password from `user` WHERE username = "' + hiddenInfo.username + '", password = "' + hiddenInfo.password + '";';
+      var query = 'SELECT userID, username, password from `user` WHERE username = "' + hiddenInfo.username + '" AND password = "' + hiddenInfo.password + '";';
 
       db.query(query).then((result) => {
         if (result && result[0].username == username) {
@@ -279,10 +286,12 @@ const profileController = {
                   if (hash != null) {
                     newInfo.password = hash;
                     
-                    var query = 'UPDATE `user` SET password = "' + newInfo.password + '";';
+                    var query = 'UPDATE `user` SET password = "' + newInfo.password + '" WHERE username = "' + username + '";';
 
                     db.query(query).then((result) => {
                       if (result != null) {
+                        Logger.logAction('User updated password', newInfo.username);
+
                         var username = newInfo.username;
                         res.redirect('/profile/' + username);
                       }
@@ -349,6 +358,8 @@ const profileController = {
       var query = 'DELETE from `user` WHERE username = "' + username + '";';
 
       db.query(query).then((result) => {
+        Logger.logAction('User deleted account', username);
+
         var query = 'DELETE from `post` WHERE username = "' + username + '";';
 
         db.query(query).then((result) => {

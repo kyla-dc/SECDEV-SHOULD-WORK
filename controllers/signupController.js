@@ -5,6 +5,7 @@ const path = require('path');
 const util = require('util');
 const saltRounds = 10;
 const initID = 1000;
+const Logger = require('../controllers/logController.js');
 
 const signupController = {
     getSignUp: function (req, res) {
@@ -41,6 +42,8 @@ const signupController = {
 
             var query = "INSERT INTO `user` (userID, username, password, email, firstName, lastName, phone, numPosts, followers, avatar, isDeleted) values ('" + user.userID + "', '" + user.username + "', '" + user.password + "', '" + user.email + "', '" + user.firstName + "', '" + user.lastName + "', '" + user.phone + "', '" + "0" + "', '" + "0" + "', '" + user.avatar + "', '" + "0" + "');";
     
+            Logger.logAction("User signed up", user.username);
+            
             await db.query(query).then((result) => {
                 res.render('signup_success', {username: username});
             });

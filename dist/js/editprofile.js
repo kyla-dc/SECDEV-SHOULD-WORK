@@ -1,3 +1,34 @@
+$(document).ready(function () {
+    var flag4 = 0;
+
+    $('#phone').keyup(function () {
+        var phone = $('#phone').val();
+        var PhoneRegex = /((^(\+)(\d){12}$)|(^\d{11}$))/
+
+        if(PhoneRegex.test(phone)) {
+            $('#phone').css('background-color', '#E3E3E3');
+            $('#wrong_Phonenumber').css("display", "none");
+            flag4 = 1;
+            enableSubmitButton();
+        }
+        else {
+            $('#phone').css('background-color', 'red');
+            $('#wrong_Phonenumber').css("display", "block");
+            $("#submit").prop("disabled", true);
+            flag4 = 0;
+        }
+    });
+
+    function enableSubmitButton() {
+        if (flag1 === 1 && flag2 === 1 && flag3 ===1 && flag4 ===1 ) {
+            $("#submit").prop("disabled", false);
+        } else {
+            $("#submit").prop("disabled", true);
+        }
+    }
+});
+
+
 function validateForm(form){
     var username = $('.username').val();
     var firstName = $('.fname').val();
