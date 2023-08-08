@@ -211,7 +211,7 @@ const profileController = {
 
             db.query(query).then((result) => {
               if (result != null) {
-                Logger.logAction('User updated profile information from ' + hiddenInfo.username + ', ' + hiddenInfo.firstName + ', ' + hiddenInfo.lastName + ', ' + hiddenInfo.phone + ' to ' + newInfo.username + ', ' + newInfo.firstName + ', ' + newInfo.lastName + ', ' + newInfo.phone, newInfo.username);
+                Logger.logAction('User updated profile information to ' + newInfo.username + ', ' + newInfo.firstName + ', ' + newInfo.lastName + ', ' + newInfo.phone, hiddenInfo.username);
 
                 var oldPostQ = {
                   username: hiddenInfo.username
