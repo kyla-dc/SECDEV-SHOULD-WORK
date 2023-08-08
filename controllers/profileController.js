@@ -15,7 +15,7 @@ const profileController = {
       var query = 'SELECT * from `user` WHERE username = "' + username + '";';
 
       db.query(query).then((result) => {
-        if(result != null) {
+        if(typeof result[0] !== 'undefined') {
           var details = {
               userID: result[0].userID,
               sessionname: req.session.username,
@@ -35,9 +35,8 @@ const profileController = {
           res.render('profile', details);
         }
         else {
-            // var error = 'Cannot find profile';
-            // res.render('error', error);
-            res.render('error');
+            var error = 'Cannot find profile';
+            res.render('error', {error});
         }
       });
     },
