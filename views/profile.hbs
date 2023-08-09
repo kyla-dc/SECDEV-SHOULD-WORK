@@ -53,6 +53,11 @@
 	<a href = "/viewposts/{{username}}"+><button class = "view-posts">View Posts</button></a>
 	<div class = "posts">Posts: {{numPosts}}</div>
 	<div class = "followers">Followers: {{followers}}</div>
+
+	{{#if isAdmin}}
+		<a href = "/userlist"><button class = "userList"> User List </button></a>
+		<a href = "/logrecords"><button class = "logRecords"> Log Records </button></a>
+	{{/if}}
 	</div>
 
 	<!-- Hidden Values -->

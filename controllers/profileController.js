@@ -8,6 +8,7 @@ const util = require('util');
 const clone = require('clone');
 const saltRounds = 10;
 const Logger = require('../controllers/logController.js');
+const { isBigUint64Array } = require('util/types');
 
 const profileController = {
     getProfile: function (req, res) {
@@ -16,6 +17,11 @@ const profileController = {
 
       db.query(query).then((result) => {
         if(typeof result[0] !== 'undefined') {
+          var isAdmin = false; 
+          if(result[0].userID == 1001){
+            isAdmin = true; 
+          }
+          
           var details = {
               userID: result[0].userID,
               sessionname: req.session.username,
@@ -25,7 +31,8 @@ const profileController = {
               username: result[0].username,
               phone: result[0].phone,
               followers: result[0].followers,
-              isDeleted: result[0].isDeleted
+              isDeleted: result[0].isDeleted,
+              isAdmin: isAdmin
           };
 
           req.session.referral = '/profile/'+details.sessionname;

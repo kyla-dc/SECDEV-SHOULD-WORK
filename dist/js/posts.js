@@ -135,6 +135,7 @@ function createPost(results) {
 			//Create Function for Like
 			createOnClickEvent(likeicon, results[i].postID, i);
 
+			//creates delete button -- k ///////////////////////////////////////////////////
 			if (sessionname == results[i].username)
 				createDeleteEvent(deleteButton, results[i].postID);
 		}
