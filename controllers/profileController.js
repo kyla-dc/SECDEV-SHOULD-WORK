@@ -317,9 +317,6 @@ const profileController = {
       console.log(username);
       console.log(userID);
 
-      // DONE
-      // User soft delete -- sets isDeleted to true instead of actually deleting the user 
-      // there's probably a better way to do this but this is what I have right now 
 
       // var query = 'SELECT username, isDeleted from `user` WHERE username = "' + username + '";';
 
