@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Admin's Log Record </title>
+	<title> Admin's User List </title>
 	<link rel = "icon" href = "../images/favicon.ico" type = "image/x-icon"/>
 	<link rel = "stylesheet" href = "../css/page.css">
 	<link rel = "stylesheet" href = "../css/nav-bar.css">
@@ -15,16 +15,18 @@
 		</form>
 	</div>
 
-    <p class ="header" id ="first_header_log"> Log ID </p>
-    <p class ="header" id ="operation_log"> Operation </p>
-    <p class ="header" id ="username_log" > Username </p>
-    <p class ="header" id ="operationdate_log"> Operation Date </p>
+    <p class ="header" id ="first_header"> Username </p>
+    <p class ="header" id ="email"> Email </p>
+    <p class ="header" id ="fname" > First Name </p>
+    <p class ="header" id ="lname"> Last Name </p>
+    <p class ="header" id ="phone"> Phone </p>
 
     {{#each .}}
-        <p class ="item" id ="first_item_log"> {{logID}} </p>
-        <p class ="item" id ="operation_log"> {{operation}}</p>
-        <p class ="item" id ="username_log"> {{username}}</p>
-        <p class ="item" id ="operationdate_log"> {{operationDate}}</p>
+        <p class ="item" id ="first_item"> {{username}} </p>
+        <p class ="item" id ="email"> {{email}} </p>
+        <p class ="item" id ="fname" > {{firstName}}</p>
+        <p class ="item" id ="lname"> {{lastName}} </p>
+        <p class ="item" id ="phone"> {{phone}} </p>
     {{/each}}
 
     <script>
